@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/header :: header">
+    <title>Testing stuff</title>
+</head>
+<body>
+
+    <div class="container">
+        <div th:include="fragments/headerNavbar :: headerNavbar"></div>
+
+        <h1>hey</h1>
+        <div class="btn btn-success">button</div>
+        <button class="btn btn-success">another</button>
+        <h1 id="msgid">hello</h1>
+
+    </div>
+
+    <script th:fragment="scripts" type="text/javascript">
+
+    </script>
+
+
+    <!--footer below-->
+    <footer th:include="fragments/footer :: footer">
+
+    </footer>
+</body>
+</html>

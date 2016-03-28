@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+    <link href="../../static/css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" rel="stylesheet" />
+</head>
+<body>
+    <script th:fragment="scripts" type="text/javascript">
+        $(document).ready(function () {
+            $("#msgid").html("Testing jquery loaded correctly");
+        });
+    </script>
+</body>
+</html>

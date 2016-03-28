@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DashboardController {
     @RequestMapping("/")
     String home() {
-        return "dashboard";
+        return "index";
     }
 }
