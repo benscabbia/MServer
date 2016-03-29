@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="fragments/header :: header">
+<head>
     <title>Testing stuff</title>
+    <object th:include="fragments/header :: header" th:remove="tag"></object>
 </head>
 <body>
 
