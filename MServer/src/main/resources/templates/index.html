@@ -2,29 +2,34 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Testing stuff</title>
+    <title>Page Title</title>
+    <!--load global resources-->
     <object th:include="fragments/header :: header" th:remove="tag"></object>
 </head>
+
 <body>
+    <!--load navbar-->
+    <div th:include="fragments/headerNavbar :: headerNavbar"></div>
 
     <div class="container">
-        <div th:include="fragments/headerNavbar :: headerNavbar"></div>
-
-        <h1>hey</h1>
+        <h1>Layout Page</h1>
         <div class="btn btn-success">button</div>
-        <button class="btn btn-success">another</button>
-        <h1 id="msgid">hello</h1>
-
+        <button class="btn btn-info">another</button>
+        <h1 id="msgid">Jquery magic - This message will not show</h1>
     </div>
 
-    <script th:fragment="scripts" type="text/javascript">
+    <!--load footer-->
+    <footer th:include="fragments/footer :: footer"></footer>
 
+    <!--load global scripts-->
+    <object th:include="fragments/scripts :: scripts" th:remove="tag"></object>
+
+    <!--load local scripts-->
+    <script>
+        $(document).ready(function () {
+            $("#abc");
+        });
     </script>
 
-
-    <!--footer below-->
-    <footer th:include="fragments/footer :: footer">
-
-    </footer>
 </body>
 </html>
