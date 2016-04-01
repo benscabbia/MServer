@@ -112,9 +112,10 @@
         });
 
         //Used to change the active class
-        $( document ).on( 'click', '.nav-list li', function ( e ) {
-            $( this ).addClass( 'active' ).siblings().removeClass( 'active' );
-        } );
+        $(".nav a").on("click", function(){
+            $(".nav").find(".active").removeClass("active");
+            $(this).parent().addClass("active");
+        });
     </script>
 
 </body>
