@@ -18,7 +18,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping("/clients")
-    String showClient(){return "clients"; }
+//    @RequestMapping("/clients")
+//    String showClient(){return "clients"; }
 
 }

@@ -1,6 +1,6 @@
 <!--new pages should be based on this page-->
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboardLayout">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboardLayout" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Clients</title>
 </head>
@@ -25,6 +25,27 @@
 
     <!--libe sb admin area-->
     <div class="row">
+        <div class="col-md-12">
+            <h2>View All Clients</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Client ID</th>
+                        <th>IP Addresss</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="client : ${clients}">
+                        <td th:text="${client.getClientID()}"></td>
+                        <td th:text="${client.getIpAddress()}"></td>
+                        <td th:text="${client.getDescription()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 </body>
