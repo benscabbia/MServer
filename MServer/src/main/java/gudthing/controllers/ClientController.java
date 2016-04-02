@@ -3,6 +3,7 @@ package gudthing.controllers;
 import gudthing.models.Client;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.context.WebContext;
@@ -19,14 +20,14 @@ public class ClientController {
 
     private List<Client> allClients = new ArrayList<Client>();
 
-
-
-
     @RequestMapping(method= RequestMethod.GET)
     String index(Model model) {
         populateClientList();
-
         model.addAttribute("clients", allClients);
+
+        //required so form can use it on POST
+        model.addAttribute("client", new Client());
+
 
         //required to remove thymeleaf error
         if(false){
@@ -35,6 +36,36 @@ public class ClientController {
         }
         return "clients";
     }
+
+    @RequestMapping(method= RequestMethod.POST)
+    public String processSubmit(@ModelAttribute Client client, Model model){
+
+        model.addAttribute("client", client);
+
+        Client newClient = client;
+        System.out.println("==================================================================");
+        System.out.println(client.getClientID());
+        System.out.println(client.getIpAddress());
+        System.out.println(client.getDescription());
+
+
+
+        return "clients";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    public String greeting(@RequestParam(value="name", required = false, defaultValue = "world") String name, Model model) {
 //        model.addAttribute("name", name);

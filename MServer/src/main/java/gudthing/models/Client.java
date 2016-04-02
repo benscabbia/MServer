@@ -12,6 +12,8 @@ public class Client {
     //sets the technical  of a client
     private SystemInformation systemInformation;
 
+    public Client(){}
+
     public Client(int clientID, String ipAddress, String description){
         this.clientID = clientID;
         this.ipAddress = ipAddress;
