@@ -20,13 +20,11 @@ public class ClientController {
 
     private List<Client> allClients = new ArrayList<Client>();
 
+    //---------------------------------------GET Index /Clients-------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET)
-    String index(Model model) {
+    public String index(Model model) {
         populateClientList();
         model.addAttribute("clients", allClients);
-
-        //required so form can use it on POST
-        model.addAttribute("client", new Client());
 
 
         //required to remove thymeleaf error
@@ -37,9 +35,17 @@ public class ClientController {
         return "clients";
     }
 
-    @RequestMapping(method= RequestMethod.POST)
-    public String processSubmit(@ModelAttribute Client client, Model model){
+  //  ---------------------------------------GET Index /Create-------------------------------------------------------
+    @RequestMapping(value = "/create",method = RequestMethod.GET)
+    public String addNewClientForm(Model model){
+        //required so form can use it on POST
+        model.addAttribute("client", new Client());
+        return "createClient";
+    }
 
+//    --------------------------------------- POST  /Create-------------------------------------------------------
+    @RequestMapping(value="/create", method= RequestMethod.POST)
+    public String processSubmit(@ModelAttribute Client client, Model model){
         model.addAttribute("client", client);
 
         Client newClient = client;
@@ -48,9 +54,7 @@ public class ClientController {
         System.out.println(client.getIpAddress());
         System.out.println(client.getDescription());
 
-
-
-        return "clients";
+        return "createClient";
     }
 
 
