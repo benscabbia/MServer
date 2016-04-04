@@ -17,15 +17,19 @@ import java.util.List;
 @Controller
 @RequestMapping("/clients")
 public class ClientController {
-
+    //repopulate list once only
+    private boolean started = false;
     private List<Client> allClients = new ArrayList<Client>();
 
     //---------------------------------------GET Index /Clients-------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET)
     public String index(Model model) {
-        populateClientList();
-        model.addAttribute("clients", allClients);
 
+        if(!started){
+            populateClientList();
+            started = true;
+        }
+        model.addAttribute("clients", allClients);
 
         //required to remove thymeleaf error
         if(false){
@@ -48,13 +52,15 @@ public class ClientController {
     public String processSubmit(@ModelAttribute Client client, Model model){
         model.addAttribute("client", client);
 
-        Client newClient = client;
-        System.out.println("==================================================================");
-        System.out.println(client.getClientID());
-        System.out.println(client.getIpAddress());
-        System.out.println(client.getDescription());
+        allClients.add(client);
 
-        return "createClient";
+//        Client newClient = client;
+//        System.out.println("==================================================================");
+//        System.out.println(client.getClientID());
+//        System.out.println(client.getIpAddress());
+//        System.out.println(client.getDescription());
+        //good practice to redirect after handling a POST request.
+        return "redirect:/clients";
     }
 
 
