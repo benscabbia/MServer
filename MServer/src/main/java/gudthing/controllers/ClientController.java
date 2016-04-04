@@ -1,11 +1,10 @@
 package gudthing.controllers;
 
 import gudthing.models.Client;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.context.WebContext;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ public class ClientController {
     private boolean started = false;
     private List<Client> allClients = new ArrayList<Client>();
 
-    //---------------------------------------GET Index /Clients-------------------------------------------------------
+    //  ---------------------------------------GET /Clients------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET)
     public String index(Model model) {
 
@@ -39,7 +38,7 @@ public class ClientController {
         return "clients";
     }
 
-  //  ---------------------------------------GET Index /Create-------------------------------------------------------
+    //  ---------------------------------------GET /Create-------------------------------------------------------
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String addNewClientForm(Model model){
         //required so form can use it on POST
@@ -47,34 +46,45 @@ public class ClientController {
         return "createClient";
     }
 
-//    --------------------------------------- POST  /Create-------------------------------------------------------
+    //  -------------------------------------- POST /Create------------------------------------------------------
     @RequestMapping(value="/create", method= RequestMethod.POST)
     public String processSubmit(@ModelAttribute Client client, Model model){
         model.addAttribute("client", client);
-
         allClients.add(client);
-
-//        Client newClient = client;
-//        System.out.println("==================================================================");
-//        System.out.println(client.getClientID());
-//        System.out.println(client.getIpAddress());
-//        System.out.println(client.getDescription());
         //good practice to redirect after handling a POST request.
         return "redirect:/clients";
     }
 
+    //   ------------------------------------- GET  /{id}---------------------------------------------------
+    @RequestMapping(value="/{clientID}", method=RequestMethod.GET)
+    public String getClient(@PathVariable int clientID, Model model){
+        //this will need to change once db is up and running
 
+        Client theClient = null;
+        for(Client client : allClients){
+            if(client.getClientID() == clientID){
+                theClient = client;
+                System.out.println("CLIENT FOUND########################################################################");
+                System.out.println(theClient.getClientID() + " " + theClient.getIpAddress() + " " + theClient.getDescription());
+                System.out.println("CLIENT FOUND########################################################################");
+                break;
+            }
+        }
 
+        //required to remove thymeleaf error
+        if(false){
+            WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+            context.setVariable("theClient", theClient);
+        }
 
-
-
-
-
-
-
-
-
-
+        if(theClient == null){
+            System.out.println("CLIENT NOT FOUNDD########################");
+            throw new UserNotFoundException(clientID);
+        }else{
+            model.addAttribute("theClient", theClient);
+            return "viewClient";
+        }
+    }
 
 
 //    public String greeting(@RequestParam(value="name", required = false, defaultValue = "world") String name, Model model) {
@@ -89,8 +99,12 @@ public class ClientController {
 
 
     }
+}
 
+@ResponseStatus(HttpStatus.NOT_FOUND)
+class UserNotFoundException extends RuntimeException {
 
-
-
+    public UserNotFoundException(int clientID) {
+        super("Could not find client " + clientID);
+    }
 }
