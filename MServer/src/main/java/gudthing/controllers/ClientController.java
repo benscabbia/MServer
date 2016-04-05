@@ -64,9 +64,6 @@ public class ClientController {
         for(Client client : allClients){
             if(client.getClientID() == clientID){
                 theClient = client;
-                System.out.println("CLIENT FOUND########################################################################");
-                System.out.println(theClient.getClientID() + " " + theClient.getIpAddress() + " " + theClient.getDescription());
-                System.out.println("CLIENT FOUND########################################################################");
                 break;
             }
         }
@@ -78,7 +75,7 @@ public class ClientController {
         }
 
         if(theClient == null){
-            System.out.println("CLIENT NOT FOUNDD########################");
+            System.out.println("CLIENT NOT FOUND########################");
             throw new UserNotFoundException(clientID);
         }else{
             model.addAttribute("theClient", theClient);

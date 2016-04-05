@@ -23,7 +23,7 @@
     </div>
     <!-- /.row -->
 
-    <!--libe sb admin area-->
+    <!--main area-->
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -38,6 +38,7 @@
                                 <th>Client ID</th>
                                 <th>IP Addresss</th>
                                 <th>Description</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -45,11 +46,16 @@
                                 <td th:text="${client.getClientID()}"></td>
                                 <td th:text="${client.getIpAddress()}"></td>
                                 <td th:text="${client.getDescription()}"></td>
+                                <td>
+                                    <a th:href="'/clients/' + ${client.getClientID()}" class="btn-sm btn-warning" role="button">Edit</a>
+                                    <a class="btn-sm btn-danger" role="button">Delete</a>
+
+                                </td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn btn-success" onclick="window.location='/clients/create';">Add new Client</button>
+                    <a th:href="'/clients/create'" class="btn btn-success" role="button">Add New Client</a>
                 </div>
             </div>
         </div>
