@@ -104,6 +104,23 @@ public class ClientController {
         }
     }
 
+    //   ------------------------------------- POST  /{id}/delete---------------------------------------------------
+    @RequestMapping(value="/{clientID}/delete", method=RequestMethod.POST)
+    public String deleteClient(@ModelAttribute Client client, @PathVariable int clientID, Model model){
+        if(client == null){
+            throw new UserNotFoundException(clientID);
+        }else{
+            for(int i=0; i<allClients.size(); i++){
+                Client current = allClients.get(i);
+                if(current.getClientID() == client.getClientID()){
+                    allClients.remove(i);
+                    break;
+                }
+            }
+            return "redirect:/clients";
+        }
+    }
+
 
 
 

@@ -47,8 +47,14 @@
                                 <td th:text="${client.getIpAddress()}"></td>
                                 <td th:text="${client.getDescription()}"></td>
                                 <td>
-                                    <a th:href="'/clients/' + ${client.getClientID()}" class="btn-sm btn-warning" role="button">Edit</a>
-                                    <a class="btn-sm btn-danger" role="button">Delete</a>
+                                    <form th:action="'/clients/' + ${client.getClientID()}" style="display: inline">
+                                        <input type="submit" th:value="Edit" class="btn-sm btn-warning" role="button" />
+                                    </form>
+
+                                    <form action="#" th:action="@{/clients/{clientID}/delete(clientID=${client.clientID})}" th:object="${client}" method="post" style="display:inline;">
+                                        <!--<button type="submit" value="submit" class="btn-sm btn-danger">Delete</button>-->
+                                        <input type="submit" th:value="Delete" class="btn-sm btn-danger" role="button" value="Delete" />
+                                    </form>
 
                                 </td>
                             </tr>
