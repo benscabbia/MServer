@@ -33,7 +33,7 @@
                 </div>
                 <div class="panel-body">
                     <!--<form action="#" th:action="@{/clients/create}" th:object="${client}" method="post">-->
-                    <form action="#" th:object="${theClient}" >
+                    <form action="#" th:action="@{/clients/{clientID}/update(clientID=${theClient.clientID})}" th:object="${theClient}" method="post">
                         <div class="form-group">
                             <label for="clientIDInput">Client ID </label>
                             <input type="text" class="form-control" id="clientIDInput" th:field="*{clientID}" readonly="readonly" />
@@ -49,7 +49,7 @@
                             <textarea class="form-control" id="descriptionInput" th:text="${theClient.getDescription()}" th:field="*{description}"></textarea>
                             <p class="help-block">Description is optional.</p>
                         </div>
-                        <button type="submit" value="submit" class="btn btn-success">Submit</button>
+                        <button type="submit" value="submit" class="btn btn-success">Update</button>
                     </form>
                 </div>
             </div>

@@ -20,7 +20,7 @@ public class ClientController {
     private boolean started = false;
     private List<Client> allClients = new ArrayList<Client>();
 
-    //  ---------------------------------------GET /Clients------------------------------------------------------
+    //  ---------------------------------------GET /------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET)
     public String index(Model model) {
 
@@ -61,12 +61,13 @@ public class ClientController {
         //this will need to change once db is up and running
 
         Client theClient = null;
-        for(Client client : allClients){
-            if(client.getClientID() == clientID){
-                theClient = client;
-                break;
-            }
-        }
+        theClient = getClientById(clientID);
+//        for(Client client : allClients){
+//            if(client.getClientID() == clientID){
+//                theClient = client;
+//                break;
+//            }
+//        }
 
         //required to remove thymeleaf error
         if(false){
@@ -84,9 +85,52 @@ public class ClientController {
     }
 
 
+
+    //   ------------------------------------- POST  /{id}/update---------------------------------------------------
+    //Most browsers do not support action=PUT in HTML forms
+    @RequestMapping(value="/{clientID}/update", method=RequestMethod.POST)
+    public String updateClient(@ModelAttribute Client client, @PathVariable int clientID, Model model){
+        if(client == null){
+            throw new UserNotFoundException(clientID);
+        }else{
+            for(int i=0; i<allClients.size(); i++){
+                Client current = allClients.get(i);
+                if(current.getClientID() == client.getClientID()){
+                    allClients.set(i, client);
+                    break;
+                }
+            }
+            return "redirect:/clients";
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 //    public String greeting(@RequestParam(value="name", required = false, defaultValue = "world") String name, Model model) {
 //        model.addAttribute("name", name);
 //    }
+
+    //helper method to get find client by ID
+    private Client getClientById(int clientID){
+        Client theClient = null;
+        for(Client client : allClients){
+            if(client.getClientID() == clientID){
+                theClient = client;
+                break;
+            }
+        }
+        return theClient;
+    }
 
     private void populateClientList(){
         allClients.add(new Client(1, "192.168.1.56", "this is a made up ip address :p"));
