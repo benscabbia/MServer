@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboardLayout" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit Client</title>
+    <title>View Client</title>
 </head>
 <body>
 <div layout:fragment="mainContent">
     <!-- Page Heading -->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Dashboard <small>Statistics Overview</small></h1>
+            <h1 class="page-header">Client Details</h1>
             <ol class="breadcrumb">
                 <li>
                     <i class="fa fa-dashboard"></i> <a href="/">Dashboard</a>
@@ -17,7 +17,7 @@
                     <i class="fa fa-bar-chart-o"></i><a href="/clients">Clients</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-bar-chart-o"></i> Edit client
+                    <i class="fa fa-bar-chart-o"></i> View Client
                 </li>
             </ol>
         </div>
@@ -26,35 +26,9 @@
 
     <!--main area-->
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Edit Client</h3>
-                </div>
-                <div class="panel-body">
-                    <!--<form action="#" th:action="@{/clients/create}" th:object="${client}" method="post">-->
-                    <form action="#" th:action="@{/clients/{clientID}/update(clientID=${theClient.clientID})}" th:object="${theClient}" method="post">
-                        <div class="form-group">
-                            <label for="clientIDInput">Client ID </label>
-                            <input type="text" class="form-control" id="clientIDInput" th:field="*{clientID}" readonly="readonly" />
-
-                        </div>
-                        <div class="form-group">
-                            <label for="ipAddressInput">IP Address</label>
-                            <input type="text" class="form-control" id="ipAddressInput" th:field="*{ipAddress}"  />
-                            <!--<input type="text" class="form-control" id="ipAddressInput" th:value="${theClient.getIpAddress()}" />-->
-                        </div>
-                        <div class="form-group">
-                            <label for="descriptionInput">Description</label>
-                            <textarea class="form-control" id="descriptionInput" th:text="${theClient.getDescription()}" th:field="*{description}"></textarea>
-                            <p class="help-block">Description is optional.</p>
-                        </div>
-                        <button type="submit" value="submit" class="btn btn-success">Update</button>
-                    </form>
-                </div>
-            </div>
-
-        </div>
+        <h1>HELLO WORKING</h1>
+        <h4> ${client.getClientID()}</h4>
+        <h5 th:text="${client.getIpAddress()}"></h5>
     </div>
 </div>
 </body>

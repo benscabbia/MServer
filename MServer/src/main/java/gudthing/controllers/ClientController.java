@@ -38,6 +38,14 @@ public class ClientController {
         return "clients";
     }
 
+    //  ---------------------------------------GET /{id}/details-------------------------------------------------
+    @RequestMapping(value="/{clientID}/details", method = RequestMethod.GET)
+    public String getClientDetails(@PathVariable int clientID, Model model){
+        Client client = getClientById(clientID);
+        model.addAttribute("client", client);
+        return "viewClient";
+    }
+
     //  ---------------------------------------GET /Create-------------------------------------------------------
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String addNewClientForm(Model model){
@@ -80,11 +88,9 @@ public class ClientController {
             throw new UserNotFoundException(clientID);
         }else{
             model.addAttribute("theClient", theClient);
-            return "viewClient";
+            return "editClient";
         }
     }
-
-
 
     //   ------------------------------------- POST  /{id}/update---------------------------------------------------
     //Most browsers do not support action=PUT in HTML forms
@@ -154,8 +160,6 @@ public class ClientController {
         allClients.add(new Client(2, "192.168.1.65", "another IP address"));
         allClients.add(new Client(3, "192.168.3.48"));
         allClients.add(new Client(4, "192.168.24.45"));
-
-
     }
 }
 

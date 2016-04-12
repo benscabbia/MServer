@@ -6,11 +6,11 @@ package gudthing.models;
 public class Client {
 
 
-    private int clientID; //mandatory
-    private String ipAddress; //mandatory
-    private String description;
+    public int clientID; //mandatory
+    public String ipAddress; //mandatory
+    public String description;
     //sets the technical  of a client
-    private SystemInformation systemInformation;
+    public SystemInformation systemInformation;
 
     public Client(){}
 

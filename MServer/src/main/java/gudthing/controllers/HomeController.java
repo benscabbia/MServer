@@ -21,4 +21,10 @@ public class HomeController {
 //    @RequestMapping("/clients")
 //    String showClient(){return "clients"; }
 
+
+
 }
+
+//NEED TO FIGURE OUT HOW TO GET CHECKBOXES http://stackoverflow.com/questions/2060839/spring-mvc-and-checkboxes
+//THEN WITH CHECKBOXES, i CAN GET INPUT
+//WITH INPUT I CAN QUERY AND SHOW RESULTS ON RESULTS PAGE....
