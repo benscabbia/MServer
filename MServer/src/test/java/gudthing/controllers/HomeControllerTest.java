@@ -32,6 +32,7 @@ public class HomeControllerTest {
     }
 
     @Test
+    // GET /
     public void testIndex() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.ALL))
                 .andExpect(status().isOk())

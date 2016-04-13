@@ -43,6 +43,7 @@ public class ClientController {
     public String getClientDetails(@PathVariable int clientID, Model model){
         Client client = getClientById(clientID);
         model.addAttribute("client", client);
+        //TODO details page is to be completed
         return "viewClient";
     }
 
@@ -70,12 +71,6 @@ public class ClientController {
 
         Client theClient = null;
         theClient = getClientById(clientID);
-//        for(Client client : allClients){
-//            if(client.getClientID() == clientID){
-//                theClient = client;
-//                break;
-//            }
-//        }
 
         //required to remove thymeleaf error
         if(false){
