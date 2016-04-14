@@ -45,6 +45,10 @@
                             <!--<input type="text" class="form-control" id="ipAddressInput" th:value="${theClient.getIpAddress()}" />-->
                         </div>
                         <div class="form-group">
+                            <label for="portNumberInput">Port</label>
+                            <input type="text" class="form-control" id="portNumberInput" th:field="*{portNumber}"  />
+                        </div>
+                        <div class="form-group">
                             <label for="descriptionInput">Description</label>
                             <textarea class="form-control" id="descriptionInput" th:text="${theClient.getDescription()}" th:field="*{description}"></textarea>
                             <p class="help-block">Description is optional.</p>

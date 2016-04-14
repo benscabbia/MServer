@@ -21,4 +21,20 @@ public class ClientWithSelectionListWrapper {
     public ClientWithSelectionListWrapper(){
 
     }
+
+    public List<ClientWithSelection> getSelectedClients(){
+        if(clientList != null && clientList.size() > 1){
+
+            List<ClientWithSelection> selectedClients = new ArrayList<ClientWithSelection>();
+
+            for(ClientWithSelection client : clientList){
+                if(client.getSelected() == true){
+                    selectedClients.add(client);
+                }
+            }
+            return selectedClients;
+        }else{
+            return null;
+        }
+    }
 }

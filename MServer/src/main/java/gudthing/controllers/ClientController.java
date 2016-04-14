@@ -151,10 +151,10 @@ public class ClientController {
     }
 
     private void populateClientList(){
-        allClients.add(new Client(1, "192.168.1.56", "this is a made up ip address :p"));
-        allClients.add(new Client(2, "192.168.1.65", "another IP address"));
-        allClients.add(new Client(3, "192.168.3.48"));
-        allClients.add(new Client(4, "192.168.24.45"));
+        allClients.add(new Client(1, "192.168.1.56", "1234", "this is a made up ip address :p"));
+        allClients.add(new Client(2, "192.168.1.65","1234", "another IP address"));
+        allClients.add(new Client(3, "192.168.3.48","1234"));
+        allClients.add(new Client(4, "192.168.24.45", "1234"));
     }
 }
 

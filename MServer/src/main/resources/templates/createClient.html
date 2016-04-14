@@ -45,6 +45,10 @@
                             <input type="text" class="form-control" id="ipAddressInput" placeholder="192.168.1.90" th:field="*{ipAddress}"/>
                         </div>
                         <div class="form-group">
+                            <label for="portNumberInput">Port</label>
+                            <input type="text" class="form-control" id="portNumberInput" placeholder="8080" th:field="*{portNumber}"/>
+                        </div>
+                        <div class="form-group">
                             <label for="descriptionInput">Description</label>
                             <textarea class="form-control" id="descriptionInput" placeholder="Description" th:field="*{description}"></textarea>
                             <p class="help-block">Description is optional.</p>

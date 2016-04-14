@@ -8,21 +8,24 @@ public class Client {
 
     public int clientID; //mandatory
     public String ipAddress; //mandatory
+    public String portNumber;
     public String description;
     //sets the technical  of a client
     public SystemInformation systemInformation;
 
     public Client(){}
 
-    public Client(int clientID, String ipAddress, String description){
+    public Client(int clientID, String ipAddress, String portNumber, String description){
         this.clientID = clientID;
         this.ipAddress = ipAddress;
+        this.portNumber = portNumber;
         this.description = description;
     }
 
-    public Client(int clientID, String ipAddress) {
+    public Client(int clientID, String ipAddress, String portNumber) {
         this.clientID = clientID;
         this.ipAddress = ipAddress;
+        this.portNumber = portNumber;
     }
 
     public int getClientID() {
@@ -55,5 +58,13 @@ public class Client {
 
     public void setSystemInformation(SystemInformation systemInformation) {
         this.systemInformation = systemInformation;
+    }
+
+    public String getPortNumber() {
+        return portNumber;
+    }
+
+    public void setPortNumber(String portNumber) {
+        this.portNumber = portNumber;
     }
 }

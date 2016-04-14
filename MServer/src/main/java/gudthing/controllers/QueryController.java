@@ -63,6 +63,26 @@ public class QueryController {
         System.out.println("--");
         model.addAttribute("wrapper", wrapper);
 
+        if(wrapper != null){
+            List<ClientWithSelection> allClients = wrapper.getSelectedClients();
+
+            //no selection was made
+            if(allClients.size() < 1){
+                return "QueryController/queryIndex";
+            }
+
+            //TESTING PURPOSES
+            ClientWithSelection firstClient = allClients.get(0);
+            System.out.println("#####################################TESTING##############################");
+            System.out.println(firstClient.toString());
+        }
+
+
+
+
+
+
+
 
         return "QueryController/queryIndex";
     }
@@ -71,9 +91,9 @@ public class QueryController {
 
 
     private void populateClientList(){
-        allClients.add(new Client(1, "192.168.1.56", "this is a made up ip address :p"));
-        allClients.add(new Client(2, "192.168.1.65", "another IP address"));
-        allClients.add(new Client(3, "192.168.3.48"));
-        allClients.add(new Client(4, "192.168.24.45"));
+        allClients.add(new Client(1, "192.168.1.151", "8081", "Ben's Desktop"));
+        allClients.add(new Client(2, "192.168.1.65", "123", "another IP address"));
+        allClients.add(new Client(3, "192.168.3.48", "5895"));
+        allClients.add(new Client(4, "192.168.24.45", "9999"));
     }
 }
