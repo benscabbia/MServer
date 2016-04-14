@@ -3,11 +3,13 @@ package gudthing.controllers;
 import gudthing.models.Client;
 import gudthing.models.ClientWithSelection;
 import gudthing.models.ClientWithSelectionListWrapper;
+import gudthing.models.Message;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.thymeleaf.context.WebContext;
 
 import java.util.ArrayList;
@@ -75,9 +77,29 @@ public class QueryController {
             ClientWithSelection firstClient = allClients.get(0);
             System.out.println("#####################################TESTING##############################");
             System.out.println(firstClient.toString());
+
+
+            //TESTING
+            RestTemplate restTemplate = new RestTemplate();
+            String url = firstClient.getIpAddress() + ":" + firstClient.getPortNumber();
+
+            String workingUrl = "http://192.168.1.151:8080";
+            System.out.println(url);
+            Message message = restTemplate.getForObject(workingUrl, Message.class);
+
+            System.out.println("#####################################TOSTRING##############################");
+            System.out.println(message.toString());
+
+            model.addAttribute("message", message);
+
+            //required to remove thymeleaf error
+            if(false){
+                WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+                context.setVariable("message", message);
+            }
+
+            return "QueryController/results";
         }
-
-
 
 
 
@@ -91,7 +113,7 @@ public class QueryController {
 
 
     private void populateClientList(){
-        allClients.add(new Client(1, "192.168.1.151", "8081", "Ben's Desktop"));
+        allClients.add(new Client(1, "192.168.1.151", "8080", "Ben's Desktop"));
         allClients.add(new Client(2, "192.168.1.65", "123", "another IP address"));
         allClients.add(new Client(3, "192.168.3.48", "5895"));
         allClients.add(new Client(4, "192.168.24.45", "9999"));

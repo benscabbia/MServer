@@ -4,9 +4,9 @@ package gudthing.models;
  * Created by Ben on 14/04/2016.
  */
 public class Message {
-    private final int id;
-    private final String instruction;
-    private final InstructionType instructionType;
+    private int id;
+    private String instruction;
+    private InstructionType instructionType;
     private InstructionStatus instructionStatus;
 
     public Message(int id, String instruction, InstructionType instructionType) {
@@ -43,5 +43,10 @@ public class Message {
                 ", instructionType=" + instructionType +
                 ", instructionStatus=" + instructionStatus +
                 '}';
+    }
+
+    //required default constructor
+    public Message(){
+
     }
 }
