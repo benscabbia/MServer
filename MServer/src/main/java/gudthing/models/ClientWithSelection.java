@@ -7,12 +7,16 @@ public class ClientWithSelection extends Client {
     private boolean selected;
     private Message message;
 
+    private InstructionType instructionType;
+
     public ClientWithSelection(Client client, boolean selected){
         this.clientID = client.getClientID();
         this.ipAddress = client.getIpAddress();
         this.portNumber = client.getPortNumber();
         this.description = client.getDescription();
         this.selected = selected;
+
+
         //this.message = message;
 
     }

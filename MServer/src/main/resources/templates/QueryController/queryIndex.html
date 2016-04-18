@@ -31,7 +31,7 @@
                 <div class="panel-body">
                     <div class="table-responsive">
 
-                        <form action="#" th:action="@{/query/submitQuery}" th:object="${wrapper}" method="post">
+                        <form action="#" th:action="@{/query/querySender}" th:object="${wrapper}" method="post">
 
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
@@ -41,7 +41,6 @@
                                     <th>IP Addresss</th>
                                     <th>Port</th>
                                     <th>Description</th>
-                                    <th>Connected?</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -66,7 +65,7 @@
                                 </tbody>
                             </table>
 
-                            <button type="submit" value="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" value="submit" class="btn btn-success">Next</button>
 
                         </form>
                     </div>
