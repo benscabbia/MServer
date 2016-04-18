@@ -5,10 +5,10 @@ package gudthing.models;
  */
 public class ClientWithInstruction extends Client {
 
-    public String message;
-    public String instructionType;
+    public Message message;
+    public InstructionType instructionType;
 
-    public ClientWithInstruction(Client client, String message, String instructionType){
+    public ClientWithInstruction(Client client, Message message, InstructionType instructionType){
 
         this.clientID = client.getClientID();
         this.ipAddress = client.getIpAddress();
@@ -25,19 +25,19 @@ public class ClientWithInstruction extends Client {
 
     public ClientWithInstruction(){}
 
-    public String getMessage() {
+    public Message getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Message message) {
         this.message = message;
     }
 
-    public String getInstructionType() {
+    public InstructionType getInstructionType() {
         return instructionType;
     }
 
-    public void setInstructionType(String instructionType) {
+    public void setInstructionType(InstructionType instructionType) {
         this.instructionType = instructionType;
     }
 }

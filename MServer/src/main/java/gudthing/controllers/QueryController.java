@@ -76,7 +76,7 @@ public class QueryController {
             ArrayList<ClientWithInstruction> allClientsWithInstructions = new ArrayList<ClientWithInstruction>();
 
             for(ClientWithSelection clientSelected : allClients){
-                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, "test", "instro"));
+                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message("Default"), InstructionType.DEFFAULT));
             }
 
 //            QueryWrapper queryWrapper = new QueryWrapper();
@@ -119,7 +119,6 @@ public class QueryController {
         model.addAttribute("instructionWrapper", instructionWrapper);
         System.out.println("#############@@@@@@@@@@@@@@@@@@@@@@@@@@@@#########################");
 
-        //System.out.println(wrapperReceived.getQueries() != null ? wrapperReceived.getQueries().size() : "null list");
         System.out.println(instructionWrapper.getClientList() != null ? instructionWrapper.getClientList().size() : "null list");
 
 

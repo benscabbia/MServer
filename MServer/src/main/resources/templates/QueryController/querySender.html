@@ -57,10 +57,16 @@
                                 <td th:text="${query.getPortNumber()}"></td>
                                 <td th:text="${query.getDescription()}"></td>
                                 <td>
-                                    <input type="text" th:field="*{clientList[__${stat.index}__].message}" />
+                                    <input type="text" th:field="*{clientList[__${stat.index}__].message.instruction}" />
                                 </td>
                                 <td>
-                                    <input type="text" th:field="*{clientList[__${stat.index}__].instructionType}" />
+                                    <input type="" th:field="*{clientList[__${stat.index}__].instructionType}" />
+                                    <!--http://stackoverflow.com/questions/25417504/thymeleaf-dropdown-not-populating-->
+                                    <!--<select>-->
+                                        <!--<option th:value="INFO" th:field="*{clientList[__${stat.index}__].instructionType}">INFO</option>-->
+                                        <!--<option th:value="DEFAULT" th:field="*{clientList[__${stat.index}__].instructionType}" >DEFAULT</option>-->
+                                        <!--<option th:value="HEALTH" th:field="*{clientList[__${stat.index}__].instructionType}" >HEALTH</option>-->
+                                    <!--</select>-->
                                 </td>
                                 <td>
                                     <!--<form th:action="'/clients/' + ${query.getClientID()} + '/details'" style="display: inline">-->
