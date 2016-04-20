@@ -25,7 +25,26 @@
     </div>
     <!-- /.row -->
 
+    <!--<tr th:each="client : ${clients}">-->
+        <!--<td th:text="${client.getClientID()}"></td>-->
+        <!--<td th:text="${client.getIpAddress()}"></td>-->
+
     <!--main area-->
+    <div th:each="theClient : ${clientsWithInstruction}">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Client: <span th:text="${theClient.getIpAddress()}"></span></h3>
+                </div>
+                 <div class="panel-body">
+                     The body stufff goes here....
+                 </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">

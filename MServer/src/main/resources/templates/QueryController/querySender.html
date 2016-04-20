@@ -47,26 +47,25 @@
                             <tr th:each="query, stat : *{clientList}">
 
                                 <td>
+                                    <span th:text="${query.getClientID()}"></span>
                                     <input type="hidden" th:field="*{clientList[__${stat.index}__].clientID}" />
                                     <input type="hidden" th:field="*{clientList[__${stat.index}__].ipAddress}" />
                                     <input type="hidden" th:field="*{clientList[__${stat.index}__].portNumber}" />
                                     <input type="hidden" th:field="*{clientList[__${stat.index}__].description}" />
                                 </td>
-                                <!--<td th:text="${query.getClient().getClientID()}"></td>-->
+                                <!--<td th:text="${query.getClientID()}"></td>-->
                                 <td th:text="${query.getIpAddress()}"></td>
                                 <td th:text="${query.getPortNumber()}"></td>
                                 <td th:text="${query.getDescription()}"></td>
                                 <td>
-                                    <input type="text" th:field="*{clientList[__${stat.index}__].message.instruction}" />
+                                    <select th:field="*{clientList[__${stat.index}__].instructionType}">
+                                        <option th:each="type, iter : ${instructionTypes}" th:value="${type}">
+                                            <span th:text="${type}"></span>
+                                        </option>
+                                    </select>
                                 </td>
                                 <td>
-                                    <input type="" th:field="*{clientList[__${stat.index}__].instructionType}" />
-                                    <!--http://stackoverflow.com/questions/25417504/thymeleaf-dropdown-not-populating-->
-                                    <!--<select>-->
-                                        <!--<option th:value="INFO" th:field="*{clientList[__${stat.index}__].instructionType}">INFO</option>-->
-                                        <!--<option th:value="DEFAULT" th:field="*{clientList[__${stat.index}__].instructionType}" >DEFAULT</option>-->
-                                        <!--<option th:value="HEALTH" th:field="*{clientList[__${stat.index}__].instructionType}" >HEALTH</option>-->
-                                    <!--</select>-->
+                                    <input type="text" th:field="*{clientList[__${stat.index}__].message.instruction}" />
                                 </td>
                                 <td>
                                     <!--<form th:action="'/clients/' + ${query.getClientID()} + '/details'" style="display: inline">-->

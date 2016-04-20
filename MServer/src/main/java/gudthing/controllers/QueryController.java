@@ -76,7 +76,7 @@ public class QueryController {
             ArrayList<ClientWithInstruction> allClientsWithInstructions = new ArrayList<ClientWithInstruction>();
 
             for(ClientWithSelection clientSelected : allClients){
-                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message("Default"), InstructionType.DEFFAULT));
+                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message("Message is loud and clear"), InstructionType.DEFFAULT));
             }
 
 //            QueryWrapper queryWrapper = new QueryWrapper();
@@ -95,13 +95,15 @@ public class QueryController {
             //model.addAttribute("queryWrapper", queryWrapper);
             model.addAttribute("instructionWrapper", instructionWrapper);
 
-
+            model.addAttribute("instructionTypes", InstructionType.values());
 
             if(false){
                 WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
                 context.setVariable("allClients", allClients);
                 //context.setVariable("queryWrapper", queryWrapper);
                 context.setVariable("instructionWrapper", instructionWrapper);
+                context.setVariable("instructionTypes", InstructionType.values());
+
             }
         }
             return "QueryController/querySender";
@@ -116,14 +118,20 @@ public class QueryController {
     public String sendQuery(@ModelAttribute ClientWithInstructionWrapper instructionWrapper, Model model){
 
         //model.addAttribute("wrapper", wrapperReceived);
-        model.addAttribute("instructionWrapper", instructionWrapper);
+        List<ClientWithInstruction> clientsWithInstruction = instructionWrapper.getClientList();
+        model.addAttribute("clientsWithInstruction", clientsWithInstruction);
+
+        //model.addAttribute("instructionWrapper", instructionWrapper);
         System.out.println("#############@@@@@@@@@@@@@@@@@@@@@@@@@@@@#########################");
 
         System.out.println(instructionWrapper.getClientList() != null ? instructionWrapper.getClientList().size() : "null list");
 
 
 
-
+        if(false){
+            WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+            context.setVariable("clientsWithInstruction", clientsWithInstruction);
+        }
 
 
         return "QueryController/results";
