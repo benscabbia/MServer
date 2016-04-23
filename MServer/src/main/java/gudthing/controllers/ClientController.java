@@ -160,7 +160,6 @@ public class ClientController {
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
 class UserNotFoundException extends RuntimeException {
-
     public UserNotFoundException(int clientID) {
         super("Could not find client " + clientID);
     }

@@ -76,7 +76,7 @@ public class QueryController {
             ArrayList<ClientWithInstruction> allClientsWithInstructions = new ArrayList<ClientWithInstruction>();
 
             for(ClientWithSelection clientSelected : allClients){
-                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message("Message is loud and clear"), InstructionType.DEFFAULT));
+                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message("Message is loud and clear"), InstructionType.DEFAULT));
             }
 
 //            QueryWrapper queryWrapper = new QueryWrapper();
@@ -110,19 +110,71 @@ public class QueryController {
     }
 
     //   ------------------------------------- POST /results---------------------------------------------------
-        //i think i need to now post my next query from send queries to here
-    //this is where i should be able to retrieve the message and instruction type.
-
     @RequestMapping(value="/querySender/results", method = RequestMethod.POST)
-//    public String sendQuery(@ModelAttribute QueryWrapper wrapperReceived, Model model){
     public String sendQuery(@ModelAttribute ClientWithInstructionWrapper instructionWrapper, Model model){
 
-        //model.addAttribute("wrapper", wrapperReceived);
         List<ClientWithInstruction> clientsWithInstruction = instructionWrapper.getClientList();
+
+        //List<ClientWithResult> clientWithResults = new ArrayList<ClientWithResult>();
+
+
+        //find out the type of message and query accordingly
+        for(ClientWithInstruction client : clientsWithInstruction){
+            switch(client.getInstructionType()){
+
+                case DEFAULT:
+                case HEALTH:
+                    System.out.println("HEALTH");
+
+                    Boolean clientConnected = QueryHandler.healthHandLer(client);
+                    System.out.println("CLIENT CLONNECTION SHOWINS AS" + clientConnected);
+                    if(Boolean.TRUE.equals(clientConnected)) {
+                        client.message.setClientResponse("The Client is Connected");
+                    }else{
+                        client.message.setClientResponse("The Client is Disconnected");
+                    }
+                    break;
+
+                case INFO:
+                    System.out.println("info");
+                    break;
+
+                case MAPPINGS:
+                    System.out.println("show mappings");
+                    break;
+
+                case METRICS:
+                    System.out.println("metrics");
+                    break;
+
+                case QUERY:
+                    System.out.println("query");
+                    break;
+
+                case SHUTDOWN:
+                    System.out.println("SHUWDOWN");
+                    break;
+
+                default:
+                    System.out.println("Default bit");
+                    break;
+            }
+
+        }
+
+
+
+
+
+
+
         model.addAttribute("clientsWithInstruction", clientsWithInstruction);
 
+
+
+
         //model.addAttribute("instructionWrapper", instructionWrapper);
-        System.out.println("#############@@@@@@@@@@@@@@@@@@@@@@@@@@@@#########################");
+
 
         System.out.println(instructionWrapper.getClientList() != null ? instructionWrapper.getClientList().size() : "null list");
 
@@ -151,7 +203,7 @@ public class QueryController {
 
 
     private void populateClientList(){
-        allClients.add(new Client(1, "192.168.1.151", "8080", "Ben's Desktop"));
+        allClients.add(new Client(1, "192.168.1.152", "8080", "Ben's Desktop"));
         allClients.add(new Client(2, "192.168.1.65", "123", "another IP address"));
         allClients.add(new Client(3, "192.168.3.48", "5895"));
         allClients.add(new Client(4, "192.168.24.45", "9999"));

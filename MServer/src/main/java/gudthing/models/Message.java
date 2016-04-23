@@ -6,6 +6,7 @@ package gudthing.models;
 public class Message {
     public static int id;
     public String instruction;
+    private String clientResponse;
 
     public Message(String instruction) {
         this.id = ++id;
@@ -23,6 +24,14 @@ public class Message {
 
     public String getInstruction() {
         return instruction;
+    }
+
+    public String getClientResponse() {
+        return clientResponse;
+    }
+
+    public void setClientResponse(String clientResponse) {
+        this.clientResponse = clientResponse;
     }
 
     @Override
