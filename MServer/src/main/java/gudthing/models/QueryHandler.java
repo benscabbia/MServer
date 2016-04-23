@@ -1,6 +1,8 @@
 package gudthing.models;
 
 import gudthing.models.InstructionModels.Health;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.regex.Matcher;
@@ -18,13 +20,19 @@ public class QueryHandler {
     public static boolean healthHandLer(ClientWithInstruction clientWithInstruction){
         String url = urlEncoder(clientWithInstruction, InstructionType.HEALTH);
 
-        Health health = restTemplate.getForObject(url, Health.class);
+        boolean connected = testResponse(url);
 
-        if(health != null && health.getStatus().equals("UP")){
-            return true;
+        if(connected){
+            Health health = restTemplate.getForObject(url, Health.class);
+            if(health != null && health.getStatus().equals("UP")){
+                return true;
+            }else{
+                return false;
+            }
         }else{
             return false;
         }
+
     };
 
     public static void infoHandler(ClientWithInstruction clientWithInstruction){
@@ -88,6 +96,23 @@ public class QueryHandler {
         }else{
             System.out.println("INVALID IP");
             return "0.0.0.0";
+        }
+
+    }
+
+    private static boolean testResponse(String url){
+        RestTemplate restTemplate = new RestTemplate();
+
+        try{
+            ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+            if(HttpStatus.OK == response.getStatusCode()){
+                return true;
+            }else{
+                return false;
+            }
+        }catch (Exception e){
+            System.out.println("EXCEPTION ");
+            return false;
         }
 
     }
