@@ -127,7 +127,7 @@ public class QueryController {
                     System.out.println("HEALTH");
 
                     Boolean clientConnected = QueryHandler.healthHandLer(client);
-                    System.out.println("CLIENT CLONNECTION SHOWINS AS" + clientConnected);
+
                     if(Boolean.TRUE.equals(clientConnected)) {
                         client.message.setClientResponse("The Client is Connected");
                     }else{
@@ -144,7 +144,10 @@ public class QueryController {
                     break;
 
                 case METRICS:
-                    System.out.println("metrics");
+                    System.out.println("METRICS");
+
+                    client.message.setClientResponse(QueryHandler.metricsHandler(client));
+
                     break;
 
                 case QUERY:

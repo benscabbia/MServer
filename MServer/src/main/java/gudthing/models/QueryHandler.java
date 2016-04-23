@@ -1,6 +1,7 @@
 package gudthing.models;
 
 import gudthing.models.InstructionModels.Health;
+import gudthing.models.InstructionModels.Metric;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -43,8 +44,17 @@ public class QueryHandler {
 
     };
 
-    public static void metricsHandler(ClientWithInstruction clientWithInstruction){
+    public static String metricsHandler(ClientWithInstruction clientWithInstruction){
+        String url = urlEncoder(clientWithInstruction, InstructionType.METRICS);
+        boolean connected = testResponse(url);
 
+        if(connected){
+            Metric metrics = restTemplate.getForObject(url, Metric.class);
+            System.out.println(metrics);
+            return metrics.toString();
+        }
+
+        return "Unable to retrieve information";
     };
 
     public static void queryHandler(ClientWithInstruction clientWithInstruction){
@@ -111,7 +121,7 @@ public class QueryHandler {
                 return false;
             }
         }catch (Exception e){
-            System.out.println("EXCEPTION ");
+            System.out.println("EXCEPTION: The RestTemplate is unable to connect with the client ");
             return false;
         }
 
