@@ -64,10 +64,10 @@ public class Metric {
 
     @Override
     public String toString() {
-        String metrics = "Total Memory: " + memory + " GB, ";
-        metrics += "\nFree Memory: " + memoryAvailable + " GB, ";
-        metrics += "\nProcessors: " + processors + ", ";
-        metrics += "\nUptime: " + uptime + " minutes, ";
+        String metrics = "Total Memory: " + memory + " GB";
+        metrics += "\nFree Memory: " + memoryAvailable + " GB";
+        metrics += "\nProcessors: " + processors;
+        metrics += "\nUptime: " + uptime + " minutes";
 
         return metrics;
     }

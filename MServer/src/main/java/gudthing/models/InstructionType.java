@@ -7,7 +7,6 @@ public enum InstructionType {
     DEFAULT("/health"),
     HEALTH("/health"),
     INFO("/info"),
-    MAPPINGS("/mappings"),
     METRICS("/metrics"),
     QUERY("/query"),
     SHUTDOWN("/shutdown");

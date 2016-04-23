@@ -40,10 +40,6 @@ public class QueryHandler {
 
     };
 
-    public static void mappingsHandler(ClientWithInstruction clientWithInstruction){
-
-    };
-
     public static String metricsHandler(ClientWithInstruction clientWithInstruction){
         String url = urlEncoder(clientWithInstruction, InstructionType.METRICS);
         boolean connected = testResponse(url);

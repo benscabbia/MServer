@@ -139,9 +139,6 @@ public class QueryController {
                     System.out.println("info");
                     break;
 
-                case MAPPINGS:
-                    System.out.println("show mappings");
-                    break;
 
                 case METRICS:
                     System.out.println("METRICS");
