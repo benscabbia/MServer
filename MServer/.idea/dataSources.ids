@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - mserver@localhost" uuid="561cfbab-a81f-4342-84e4-07c39a3fef82">
+    <database-info product="MySQL" version="5.7.11-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="mserver"/>
+      <table id="2" parent="1" name="clients"/>
+      <column id="3" parent="2" name="clientID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="4" parent="2" name="ipAddress">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="5" parent="2" name="portNumber">
+        <data-type>varchar(25)</data-type>
+      </column>
+      <column id="6" parent="2" name="description">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="7" parent="2" name="operatingSystem">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="8" parent="2" name="processor">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="9" parent="2" name="architecture">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="10" parent="2" name="version">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="11" parent="2" name="jvmVersion">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="12" parent="2" name="PRIMARY">
+        <columns>clientID</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>

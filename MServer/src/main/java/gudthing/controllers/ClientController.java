@@ -1,6 +1,9 @@
 package gudthing.controllers;
 
 import gudthing.models.Client;
+import gudthing.models.ClientDb;
+import gudthing.repository.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +19,10 @@ import java.util.List;
 @Controller
 @RequestMapping("/clients")
 public class ClientController {
+
+    @Autowired
+    private ClientRepository clientRepository;
+
     //repopulate list once only
     private boolean started = false;
     private List<Client> allClients = new ArrayList<Client>();
@@ -25,10 +32,17 @@ public class ClientController {
     public String index(Model model) {
 
         if(!started){
-            populateClientList();
+            //populateClientList();
             started = true;
         }
+        List<Client> allClients= clientRepository.findAll();
+
         model.addAttribute("clients", allClients);
+
+        System.out.println("PRINTING OUT DB CLIENTS =========================================================");
+
+
+
 
         //required to remove thymeleaf error
         if(false){
@@ -150,12 +164,12 @@ public class ClientController {
         return theClient;
     }
 
-    private void populateClientList(){
-        allClients.add(new Client(1, "192.168.1.56", "1234", "this is a made up ip address :p"));
-        allClients.add(new Client(2, "192.168.1.65","1234", "another IP address"));
-        allClients.add(new Client(3, "192.168.3.48","1234"));
-        allClients.add(new Client(4, "192.168.24.45", "1234"));
-    }
+//    private void populateClientList(){
+//        allClients.add(new Client(1, "192.168.1.56", "1234", "this is a made up ip address :p"));
+//        allClients.add(new Client(2, "192.168.1.65","1234", "another IP address"));
+//        allClients.add(new Client(3, "192.168.3.48","1234"));
+//        allClients.add(new Client(4, "192.168.24.45", "1234"));
+//    }
 }
 
 @ResponseStatus(HttpStatus.NOT_FOUND)

@@ -137,6 +137,7 @@ public class QueryController {
 
                 case INFO:
                     System.out.println("info");
+                    //TODO info
                     break;
 
 

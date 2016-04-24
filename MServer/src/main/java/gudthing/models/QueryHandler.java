@@ -38,6 +38,7 @@ public class QueryHandler {
 
     public static void infoHandler(ClientWithInstruction clientWithInstruction){
 
+
     };
 
     public static String metricsHandler(ClientWithInstruction clientWithInstruction){

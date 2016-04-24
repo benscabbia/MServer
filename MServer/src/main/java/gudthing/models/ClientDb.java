@@ -3,28 +3,27 @@ package gudthing.models;
 import javax.persistence.*;
 
 /**
- * Created by Ben on 01/04/2016.
+ * Created by Ben on 24/04/2016.
  */
 
 @Entity
 @Table(name="clients")
-public class Client {
+public class ClientDb {
+    public ClientDb() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="clientID")
-    public int clientID;
-
+    private int clientID;
     @Column(name="ipAddress")
-    public String ipAddress;
+    private String ipAddress;
 
     @Column(name="portNumber")
-    public String portNumber;
+    private String portNumber;
 
     @Column(name="description")
-    public String description;
-    //sets the technical  of a client
-    //public SystemInformation systemInformation;
+    private String description;
 
     @Column(name="operatingSystem")
     private String operatingSystem;
@@ -40,21 +39,6 @@ public class Client {
 
     @Column(name="jvmVersion")
     private String jvmVersion;
-
-    public Client(){}
-
-    public Client(int clientID, String ipAddress, String portNumber, String description){
-        this.clientID = clientID;
-        this.ipAddress = ipAddress;
-        this.portNumber = portNumber;
-        this.description = description;
-    }
-
-    public Client(int clientID, String ipAddress, String portNumber) {
-        this.clientID = clientID;
-        this.ipAddress = ipAddress;
-        this.portNumber = portNumber;
-    }
 
     public int getClientID() {
         return clientID;
@@ -72,20 +56,20 @@ public class Client {
         this.ipAddress = ipAddress;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getPortNumber() {
         return portNumber;
     }
 
     public void setPortNumber(String portNumber) {
         this.portNumber = portNumber;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getOperatingSystem() {
@@ -130,7 +114,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "ClientDb{" +
                 "clientID=" + clientID +
                 ", ipAddress='" + ipAddress + '\'' +
                 ", portNumber='" + portNumber + '\'' +
