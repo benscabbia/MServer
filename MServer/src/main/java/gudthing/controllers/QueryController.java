@@ -1,6 +1,8 @@
 package gudthing.controllers;
 
 import gudthing.models.*;
+import gudthing.repository.ClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,24 +20,21 @@ import java.util.List;
 @Controller
 @RequestMapping("/query")
 public class QueryController {
-    private boolean started = false;
+    @Autowired
+    private ClientRepository clientRepository;
 
-    private List<Client> allClients = new ArrayList<Client>();
-    private ArrayList<ClientWithSelection> allClientsWithSelection = new ArrayList<ClientWithSelection>();
+    private ArrayList<ClientWithSelection> allClientsWithSelection;
 
 
     //   ------------------------------------- GET  /---------------------------------------------------
     @RequestMapping(method= RequestMethod.GET)
     public String index(Model model) {
 
-        if(!started){
-            populateClientList();
-
-            for(int i=0; i<allClients.size(); i++){
-                //add clients to the list which also has the selection, false as default
-                allClientsWithSelection.add(i, new ClientWithSelection(allClients.get(i), false));
-            }
-            started = true;
+        List<Client> allClients = clientRepository.findAll();
+        allClientsWithSelection = new ArrayList<ClientWithSelection>();
+        for(int i=0; i<allClients.size(); i++){
+            //add clients to the list which also has the selection, false as default
+            allClientsWithSelection.add(i, new ClientWithSelection(allClients.get(i), false));
         }
 
         //create a wrapper
@@ -58,12 +57,6 @@ public class QueryController {
     @RequestMapping(value="/querySender", method = RequestMethod.POST)
     public String processQuery(@ModelAttribute ClientWithSelectionListWrapper wrapper, Model model){
 
-        System.out.println(wrapper.getClientList() != null ? wrapper.getClientList().size() : "null list");
-        System.out.println("--");
-
-
-        //model.addAttribute("wrapper", wrapper);
-
         if(wrapper != null) {
             List<ClientWithSelection> allClients = wrapper.getSelectedClients();
 
@@ -78,9 +71,6 @@ public class QueryController {
             for(ClientWithSelection clientSelected : allClients){
                 allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message("Message is loud and clear"), InstructionType.DEFAULT));
             }
-
-//            QueryWrapper queryWrapper = new QueryWrapper();
-//            queryWrapper.setQueries(allClientsToQuery);
 
             ClientWithInstructionWrapper instructionWrapper = new ClientWithInstructionWrapper();
             instructionWrapper.setClientList(allClientsWithInstructions);
@@ -115,9 +105,6 @@ public class QueryController {
 
         List<ClientWithInstruction> clientsWithInstruction = instructionWrapper.getClientList();
 
-        //List<ClientWithResult> clientWithResults = new ArrayList<ClientWithResult>();
-
-
         //find out the type of message and query accordingly
         for(ClientWithInstruction client : clientsWithInstruction){
             switch(client.getInstructionType()){
@@ -143,9 +130,7 @@ public class QueryController {
 
                 case METRICS:
                     System.out.println("METRICS");
-
                     client.message.setClientResponse(QueryHandler.metricsHandler(client));
-
                     break;
 
                 case QUERY:
@@ -164,51 +149,18 @@ public class QueryController {
         }
 
 
-
-
-
-
-
         model.addAttribute("clientsWithInstruction", clientsWithInstruction);
-
-
-
-
         //model.addAttribute("instructionWrapper", instructionWrapper);
-
-
         System.out.println(instructionWrapper.getClientList() != null ? instructionWrapper.getClientList().size() : "null list");
-
-
 
         if(false){
             WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
             context.setVariable("clientsWithInstruction", clientsWithInstruction);
         }
 
-
         return "QueryController/results";
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private void populateClientList(){
-        allClients.add(new Client(1, "192.168.1.152", "8080", "Ben's Desktop"));
-        allClients.add(new Client(2, "192.168.1.65", "123", "another IP address"));
-        allClients.add(new Client(3, "192.168.3.48", "5895"));
-        allClients.add(new Client(4, "192.168.24.45", "9999"));
-    }
 }
 
 //TESTING PURPOSES

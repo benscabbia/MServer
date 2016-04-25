@@ -23,26 +23,13 @@ public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
 
-    //repopulate list once only
-    private boolean started = false;
-    private List<Client> allClients = new ArrayList<Client>();
-
     //  ---------------------------------------GET /------------------------------------------------------
     @RequestMapping(method= RequestMethod.GET)
     public String index(Model model) {
 
-        if(!started){
-            //populateClientList();
-            started = true;
-        }
         List<Client> allClients= clientRepository.findAll();
 
         model.addAttribute("clients", allClients);
-
-        System.out.println("PRINTING OUT DB CLIENTS =========================================================");
-
-
-
 
         //required to remove thymeleaf error
         if(false){
@@ -55,7 +42,7 @@ public class ClientController {
     //  ---------------------------------------GET /{id}/details-------------------------------------------------
     @RequestMapping(value="/{clientID}/details", method = RequestMethod.GET)
     public String getClientDetails(@PathVariable int clientID, Model model){
-        Client client = getClientById(clientID);
+        Client client = clientRepository.findClientByClientID(clientID);
         model.addAttribute("client", client);
         //TODO details page is to be completed
         return "viewClient";
@@ -112,6 +99,7 @@ public class ClientController {
             editClient.portNumber = client.portNumber;
             editClient.description = client.description;
             clientRepository.saveAndFlush(editClient);
+            //TODO need to give the option to update the other properties
             return "redirect:/clients";
         }
     }
@@ -126,15 +114,6 @@ public class ClientController {
             Client deleteClient = clientRepository.findClientByClientID(clientID);
             clientRepository.delete(deleteClient);
             clientRepository.flush();
-
-
-            for(int i=0; i<allClients.size(); i++){
-                Client current = allClients.get(i);
-                if(current.getClientID() == client.getClientID()){
-                    allClients.remove(i);
-                    break;
-                }
-            }
             return "redirect:/clients";
         }
     }
@@ -156,23 +135,15 @@ public class ClientController {
 //    }
 
     //helper method to get find client by ID
-    private Client getClientById(int clientID){
-        Client theClient = null;
-        for(Client client : allClients){
-            if(client.getClientID() == clientID){
-                theClient = client;
-                break;
-            }
-        }
-        return theClient;
-    }
-
-//    private void populateClientList(){
-//        allClients.add(new Client(1, "192.168.1.56", "1234", "this is a made up ip address :p"));
-//        allClients.add(new Client(2, "192.168.1.65","1234", "another IP address"));
-//        allClients.add(new Client(3, "192.168.3.48","1234"));
-//        allClients.add(new Client(4, "192.168.24.45", "1234"));
-//    }
+//    private Client getClientById(int clientID){
+//        Client theClient = null;
+//        for(Client client : allClients){
+//            if(client.getClientID() == clientID){
+//                theClient = client;
+//                break;
+//            }
+//        }
+//        return theClient;
 }
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
