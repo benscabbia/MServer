@@ -58,7 +58,23 @@ public class QueryHandler {
 
     };
 
-    public static void shutdownHandler(ClientWithInstruction clientWithInstruction){
+    public static String shutdownHandler(ClientWithInstruction clientWithInstruction){
+        String url = urlEncoder(clientWithInstruction, InstructionType.SHUTDOWN);
+
+            try{
+                System.out.println(url);
+                ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
+                HttpStatus status = response.getStatusCode();
+                System.out.println(status);
+
+                if(status == HttpStatus.OK ){
+                    return "The client has been shut down successfully.";
+                }else{
+                    return "There was an error: '"+ status.toString() + "'. Could not shut client down";
+                }
+            }catch (Exception e){
+                return "There was an error. Probable cause is that system is unable to connect to client, please try run a HEALTH command";
+            }
 
     };
 

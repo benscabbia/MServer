@@ -25,7 +25,6 @@ public class QueryController {
 
     private ArrayList<ClientWithSelection> allClientsWithSelection;
 
-
     //   ------------------------------------- GET  /---------------------------------------------------
     @RequestMapping(method= RequestMethod.GET)
     public String index(Model model) {
@@ -53,7 +52,6 @@ public class QueryController {
 
 
     //   ------------------------------------- POST /querySender---------------------------------------------------
-
     @RequestMapping(value="/querySender", method = RequestMethod.POST)
     public String processQuery(@ModelAttribute ClientWithSelectionListWrapper wrapper, Model model){
 
@@ -139,6 +137,7 @@ public class QueryController {
 
                 case SHUTDOWN:
                     System.out.println("SHUWDOWN");
+                    client.message.setClientResponse(QueryHandler.shutdownHandler(client));
                     break;
 
                 default:
