@@ -73,7 +73,7 @@ public class ClientController {
     @RequestMapping(value="/create", method= RequestMethod.POST)
     public String processSubmit(@ModelAttribute Client client, Model model){
         model.addAttribute("client", client);
-        allClients.add(client);
+        clientRepository.saveAndFlush(client);
         //good practice to redirect after handling a POST request.
         return "redirect:/clients";
     }
@@ -81,10 +81,8 @@ public class ClientController {
     //   ------------------------------------- GET  /{id}---------------------------------------------------
     @RequestMapping(value="/{clientID}", method=RequestMethod.GET)
     public String getClient(@PathVariable int clientID, Model model){
-        //this will need to change once db is up and running
 
-        Client theClient = null;
-        theClient = getClientById(clientID);
+        Client theClient = clientRepository.findClientByClientID(clientID);
 
         //required to remove thymeleaf error
         if(false){
@@ -108,13 +106,12 @@ public class ClientController {
         if(client == null){
             throw new UserNotFoundException(clientID);
         }else{
-            for(int i=0; i<allClients.size(); i++){
-                Client current = allClients.get(i);
-                if(current.getClientID() == client.getClientID()){
-                    allClients.set(i, client);
-                    break;
-                }
-            }
+
+            Client editClient = clientRepository.findClientByClientID(clientID);
+            editClient.ipAddress = client.ipAddress;
+            editClient.portNumber = client.portNumber;
+            editClient.description = client.description;
+            clientRepository.saveAndFlush(editClient);
             return "redirect:/clients";
         }
     }
@@ -125,6 +122,12 @@ public class ClientController {
         if(client == null){
             throw new UserNotFoundException(clientID);
         }else{
+
+            Client deleteClient = clientRepository.findClientByClientID(clientID);
+            clientRepository.delete(deleteClient);
+            clientRepository.flush();
+
+
             for(int i=0; i<allClients.size(); i++){
                 Client current = allClients.get(i);
                 if(current.getClientID() == client.getClientID()){
