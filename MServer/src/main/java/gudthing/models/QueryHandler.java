@@ -2,8 +2,7 @@ package gudthing.models;
 
 import gudthing.models.InstructionModels.Health;
 import gudthing.models.InstructionModels.Metric;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.regex.Matcher;
@@ -54,7 +53,31 @@ public class QueryHandler {
         return "Unable to retrieve information";
     };
 
-    public static void queryHandler(ClientWithInstruction clientWithInstruction){
+    public static String queryHandler(ClientWithInstruction clientWithInstruction){
+        String url = urlEncoder(clientWithInstruction, InstructionType.QUERY);
+        url += "/sqlDatabase";
+
+        try {
+            System.out.println(url);
+            System.out.println("WHat we going to send");
+            System.out.println("To: " + url + ", send: " + clientWithInstruction.getMessage().toString());
+
+            Message instruction = clientWithInstruction.getMessage();
+
+            Message response = restTemplate.postForObject(url, instruction, Message.class);
+
+//            ResponseEntity<Message> response = restTemplate.postForEntity(url, clientWithInstruction.getMessage(), Message.class);
+
+
+//            HttpStatus status = response.getStatusCode();
+//            System.out.println(status);
+//            System.out.println(response.toString());
+            System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+            return response.getClientResponse();
+        }catch (Exception e){
+            System.out.println("EXCEPTION");
+            return "EXCEPTION";
+        }
 
     };
 

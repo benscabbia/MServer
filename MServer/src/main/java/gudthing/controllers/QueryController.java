@@ -67,7 +67,7 @@ public class QueryController {
             ArrayList<ClientWithInstruction> allClientsWithInstructions = new ArrayList<ClientWithInstruction>();
 
             for(ClientWithSelection clientSelected : allClients){
-                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message("Message is loud and clear"), InstructionType.DEFAULT));
+                allClientsWithInstructions.add(new ClientWithInstruction(clientSelected, new Message(""), InstructionType.DEFAULT));
             }
 
             ClientWithInstructionWrapper instructionWrapper = new ClientWithInstructionWrapper();
@@ -132,7 +132,8 @@ public class QueryController {
                     break;
 
                 case QUERY:
-                    System.out.println("query");
+                    System.out.println("QUERY");
+                    client.message.setClientResponse(QueryHandler.queryHandler(client));
                     break;
 
                 case SHUTDOWN:

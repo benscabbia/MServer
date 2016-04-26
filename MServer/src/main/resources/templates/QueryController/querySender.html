@@ -39,7 +39,7 @@
                                 <th>Port</th>
                                 <th>Description</th>
                                 <th>Type</th>
-                                <th>Message</th>
+                                <th>Instruction</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
@@ -65,20 +65,11 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" th:field="*{clientList[__${stat.index}__].message.instruction}" />
+                                    <textarea style="width:100%" name="message" cols="40" rows="5" th:field="*{clientList[__${stat.index}__].message.instruction}" ></textarea>
+
                                 </td>
                                 <td>
-                                    <!--<form th:action="'/clients/' + ${query.getClientID()} + '/details'" style="display: inline">-->
-                                        <!--<input type="submit" th:value="View" class="btn-sm btn-success" role="button" />-->
-                                    <!--</form>-->
-
-                                    <!--<form th:action="'/clients/' + ${query.getClientID()}" style="display: inline">-->
-                                        <!--<input type="submit" th:value="Edit" class="btn-sm btn-warning" role="button" />-->
-                                    <!--</form>-->
-
-                                    <!--<form action="#" th:action="@{/clients/{clientID}/delete(clientID=${query.clientID})}" th:object="${client}" method="post" style="display:inline;">-->
-                                        <!--<input type="submit" th:value="Delete" class="btn-sm btn-danger" role="button" value="Delete" />-->
-                                    <!--</form>-->
+                                    <button type="submit" value="submit" class="btn btn-success">Submit Query</button>
 
                                 </td>
                             </tr>
@@ -94,6 +85,7 @@
         </div>
     </div>
 </div>
+
 </body>
 </html>
 
