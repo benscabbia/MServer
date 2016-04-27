@@ -58,20 +58,10 @@ public class QueryHandler {
         url += "/sqlDatabase";
 
         try {
-            System.out.println(url);
-            System.out.println("WHat we going to send");
-            System.out.println("To: " + url + ", send: " + clientWithInstruction.getMessage().toString());
 
             Message instruction = clientWithInstruction.getMessage();
-
             Message response = restTemplate.postForObject(url, instruction, Message.class);
 
-//            ResponseEntity<Message> response = restTemplate.postForEntity(url, clientWithInstruction.getMessage(), Message.class);
-
-
-//            HttpStatus status = response.getStatusCode();
-//            System.out.println(status);
-//            System.out.println(response.toString());
             System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             return response.getClientResponse();
         }catch (Exception e){

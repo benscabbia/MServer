@@ -37,7 +37,7 @@
                     <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Client: <span th:text="${theClient.getIpAddress()}"></span></h3>
                 </div>
                  <div class="panel-body">
-                     <table class="table table-bordered table-hover table-striped">
+                     <table class="table table-bordered table-hover table-striped" style="table-layout: fixed; word-wrap: break-word;" >
                          <thead>
                          <tr>
                              <th class="col-md-2">Instruction Type</th>
@@ -47,7 +47,7 @@
                          <tbody>
                          <tr>
                              <td th:text="${(theClient.instructionType)}"></td>
-                             <td th:text="${(theClient.message.getClientResponse())}" style="white-space:pre;"></td>
+                             <td th:text="${(theClient.message.getClientResponse())}"></td>
                          </tr>
                          </tbody>
                      </table>
