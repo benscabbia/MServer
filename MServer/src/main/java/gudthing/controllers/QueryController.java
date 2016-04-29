@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.thymeleaf.context.WebContext;
@@ -63,6 +64,24 @@ public class QueryController {
                 allClients = allClientsWithSelection;
             }
 
+            if(allClients.size() == 1){
+                System.out.println("1 client selected#######################");
+                Client client = allClients.get(0);
+                int id = client.getClientID();
+                //todo single client goes to comprehensive query
+                return "redirect:/query/" + id;
+
+//                return "QueryController/querySender/{+" + client.getClientID() + "}";
+
+                /*
+                * if client is 1 select, get its id and post url of
+                * querySender/3 - 3 is client id
+                * then load a page which gives use an option to select which queries he would like to send
+                * -[need to design this page in my head]
+                * */
+
+            }
+
 
             ArrayList<ClientWithInstruction> allClientsWithInstructions = new ArrayList<ClientWithInstruction>();
 
@@ -95,6 +114,15 @@ public class QueryController {
             }
         }
             return "QueryController/querySender";
+    }
+
+
+    //   ------------------------------------- GET /query/{id}-------------------------------------------------
+    @RequestMapping(value="/{clientID}", method=RequestMethod.GET)
+    public String getClient(@PathVariable int clientID, Model model){
+        System.out.println("HITTING GET");
+        System.out.println(clientID + " is the id found");
+        return "QueryController/querySingleSender";
     }
 
     //   ------------------------------------- POST /results---------------------------------------------------
