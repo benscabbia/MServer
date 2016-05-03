@@ -120,9 +120,49 @@ public class QueryController {
     //   ------------------------------------- GET /query/{id}-------------------------------------------------
     @RequestMapping(value="/{clientID}", method=RequestMethod.GET)
     public String getClient(@PathVariable int clientID, Model model){
+
+        if(clientID>0){
+            Client client = clientRepository.findClientByClientID(clientID);
+            model.addAttribute(client);
+            model.addAttribute("instructionTypes", InstructionType.values());
+
+            //an array that can store many instructions
+            List<SingleClientInstruction> clientInstructions = new ArrayList<SingleClientInstruction>();
+            SingleClientInstructionWrapper singleClientInstructionWrapper = new SingleClientInstructionWrapper();
+            singleClientInstructionWrapper.setInstructionArray(clientInstructions);
+
+            model.addAttribute("singleClientInstructionWrapper", singleClientInstructionWrapper);
+            model.addAttribute("SingleClientInstruction", new SingleClientInstruction());
+
+            if(false){
+                WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+                context.setVariable("singleClientInstruction", new SingleClientInstruction());
+            }
+
+        }else{
+            return "QueryController/querySender";
+        }
+
         System.out.println("HITTING GET");
         System.out.println(clientID + " is the id found");
+
+
+
         return "QueryController/querySingleSender";
+    }
+
+
+    //   ------------------------------------- POST  /query/{id}---------------------------------------------------
+    @RequestMapping(value="/{clientID}", method = RequestMethod.POST)
+    public String processSingleClient(@ModelAttribute SingleClientInstructionWrapper wrapper, Model model){
+
+        if(wrapper != null){
+            List<SingleClientInstruction> instructions = wrapper.getInstructionArray();
+
+        }
+
+
+        return "/";
     }
 
     //   ------------------------------------- POST /results---------------------------------------------------
