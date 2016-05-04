@@ -17,10 +17,6 @@ public class ClientWithInstruction extends Client {
 
         this.message = message;
         this.instructionType = instructionType;
-
-
-        //this.message = message;
-
     }
 
     public ClientWithInstruction(){}

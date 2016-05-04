@@ -29,7 +29,7 @@
         <div class="row">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Client: <span th:text="${instruction.message.getInstruction()}"></span></h3>
+                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Message: <span th:text="${instruction.message.getInstruction()}"></span></h3>
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered table-hover table-striped" style="table-layout: fixed; word-wrap: break-word;" >
@@ -41,8 +41,8 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td th:text="${(instruction.instructionType)}"></td>
-                            <td th:text="${(instruction.message.getInstruction())}"></td>
+                            <td th:text="${(instruction.getInstructionType())}"></td>
+                            <td th:text="${(instruction.getMessage().getClientResponse())}"></td>
                         </tr>
                         </tbody>
                     </table>

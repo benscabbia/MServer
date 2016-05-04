@@ -68,18 +68,7 @@ public class QueryController {
                 System.out.println("1 client selected#######################");
                 Client client = allClients.get(0);
                 int id = client.getClientID();
-                //todo single client goes to comprehensive query
                 return "redirect:/query/" + id;
-
-//                return "QueryController/querySender/{+" + client.getClientID() + "}";
-
-                /*
-                * if client is 1 select, get its id and post url of
-                * querySender/3 - 3 is client id
-                * then load a page which gives use an option to select which queries he would like to send
-                * -[need to design this page in my head]
-                * */
-
             }
 
 
@@ -146,24 +135,35 @@ public class QueryController {
         System.out.println("HITTING GET");
         System.out.println(clientID + " is the id found");
 
-
-
         return "QueryController/querySingleSender";
     }
 
 
     //   ------------------------------------- POST  /query/{id}---------------------------------------------------
     @RequestMapping(value="/{clientID}", method = RequestMethod.POST)
-    public String processSingleClient(@ModelAttribute SingleClientInstructionWrapper wrapper, Model model){
+    public String processSingleClient(@ModelAttribute SingleClientInstructionWrapper wrapper, @PathVariable int clientID, Model model){
 
-        if(wrapper != null){
+        Client findClient = clientRepository.findClientByClientID(clientID);
+        //ClientWithInstruction client;
+
+        if(wrapper != null && findClient != null){
             List<SingleClientInstruction> instructions = wrapper.getInstructionArray();
 
-            model.addAttribute("singleClientInstructions", instructions);
+            List<ClientWithInstruction> clientWithInstructions = new ArrayList<ClientWithInstruction>();
+
+            for(SingleClientInstruction instruction : instructions){
+                clientWithInstructions.add(new ClientWithInstruction(findClient, instruction.getMessage(), instruction.getInstructionType() ));
+            }
+
+            for(ClientWithInstruction client : clientWithInstructions){
+                queryHandler(client);
+            }
+
+            model.addAttribute("singleClientInstructions", clientWithInstructions);
 
             if(false){
                 WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
-                context.setVariable("singleClientInstructions", instructions);
+                context.setVariable("singleClientInstructions", clientWithInstructions);
             }
         }
 
@@ -176,49 +176,8 @@ public class QueryController {
 
         List<ClientWithInstruction> clientsWithInstruction = instructionWrapper.getClientList();
 
-        //find out the type of message and query accordingly
         for(ClientWithInstruction client : clientsWithInstruction){
-            switch(client.getInstructionType()){
-
-                case DEFAULT:
-                case HEALTH:
-                    System.out.println("HEALTH");
-
-                    Boolean clientConnected = QueryHandler.healthHandLer(client);
-
-                    if(Boolean.TRUE.equals(clientConnected)) {
-                        client.message.setClientResponse("The Client is Connected");
-                    }else{
-                        client.message.setClientResponse("The Client is Disconnected");
-                    }
-                    break;
-
-                case INFO:
-                    System.out.println("info");
-                    //TODO info
-                    break;
-
-
-                case METRICS:
-                    System.out.println("METRICS");
-                    client.message.setClientResponse(QueryHandler.metricsHandler(client));
-                    break;
-
-                case QUERY:
-                    System.out.println("QUERY");
-                    client.message.setClientResponse(QueryHandler.queryHandler(client));
-                    break;
-
-                case SHUTDOWN:
-                    System.out.println("SHUWDOWN");
-                    client.message.setClientResponse(QueryHandler.shutdownHandler(client));
-                    break;
-
-                default:
-                    System.out.println("Default bit");
-                    break;
-            }
-
+            queryHandler(client);
         }
 
 
@@ -232,6 +191,53 @@ public class QueryController {
         }
 
         return "QueryController/results";
+    }
+
+
+
+    private void queryHandler(ClientWithInstruction client){
+
+        switch(client.getInstructionType()){
+
+            case DEFAULT:
+            case HEALTH:
+                System.out.println("HEALTH");
+
+                Boolean clientConnected = QueryHandler.healthHandLer(client);
+
+                if(Boolean.TRUE.equals(clientConnected)) {
+                    client.message.setClientResponse("The Client is Connected");
+                }else{
+                    client.message.setClientResponse("The Client is Disconnected");
+                }
+                break;
+
+            case INFO:
+                System.out.println("info");
+                //TODO info
+                break;
+
+
+            case METRICS:
+                System.out.println("METRICS");
+                client.message.setClientResponse(QueryHandler.metricsHandler(client));
+                break;
+
+            case QUERY:
+                System.out.println("QUERY");
+                client.message.setClientResponse(QueryHandler.queryHandler(client));
+                break;
+
+            case SHUTDOWN:
+                System.out.println("SHUWDOWN");
+                client.message.setClientResponse(QueryHandler.shutdownHandler(client));
+                break;
+
+            default:
+                System.out.println("Default bit");
+                break;
+        }
+
     }
 
 }
@@ -256,3 +262,44 @@ public class QueryController {
 //            model.addAttribute("message", message);
 
 //required to remove thymeleaf error
+
+//KEPT INcase of bug in method
+//            switch(client.getInstructionType()){
+//
+//                case DEFAULT:
+//                case HEALTH:
+//                    System.out.println("HEALTH");
+//
+//                    Boolean clientConnected = QueryHandler.healthHandLer(client);
+//
+//                    if(Boolean.TRUE.equals(clientConnected)) {
+//                        client.message.setClientResponse("The Client is Connected");
+//                    }else{
+//                        client.message.setClientResponse("The Client is Disconnected");
+//                    }
+//                    break;
+//
+//                case INFO:
+//                    System.out.println("info");
+//                    //TODO info
+//                    break;
+//
+//                case METRICS:
+//                    System.out.println("METRICS");
+//                    client.message.setClientResponse(QueryHandler.metricsHandler(client));
+//                    break;
+//
+//                case QUERY:
+//                    System.out.println("QUERY");
+//                    client.message.setClientResponse(QueryHandler.queryHandler(client));
+//                    break;
+//
+//                case SHUTDOWN:
+//                    System.out.println("SHUWDOWN");
+//                    client.message.setClientResponse(QueryHandler.shutdownHandler(client));
+//                    break;
+//
+//                default:
+//                    System.out.println("Default bit");
+//                    break;
+//            }
