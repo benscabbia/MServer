@@ -159,10 +159,15 @@ public class QueryController {
         if(wrapper != null){
             List<SingleClientInstruction> instructions = wrapper.getInstructionArray();
 
+            model.addAttribute("singleClientInstructions", instructions);
+
+            if(false){
+                WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+                context.setVariable("singleClientInstructions", instructions);
+            }
         }
 
-
-        return "/";
+        return "QueryController/clientResults";
     }
 
     //   ------------------------------------- POST /results---------------------------------------------------

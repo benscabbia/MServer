@@ -52,7 +52,7 @@
                     <h4>Add your queries to send to the client</h4>
 
                     <form action="#" th:action="@{/query/{clientID}(clientID=${client.clientID})}" th:object="${singleClientInstructionWrapper}" method="post">
-                        <table id="mytable" class="table table-bordered table-hover table-striped">
+                        <table id="queryTable" class="table table-bordered table-hover table-striped">
                         <thead>
                             <tr>
                                 <th>Query Type</th>
@@ -79,8 +79,9 @@
                     </table>
                         <button type="submit" value="submit" class="btn btn-success">Send Queries</button>
                     </form>
+                    <br/>
+                    <button id="insert-row" class="btn btn-primary"> <i class="fa fa-plus fa-2"></i> Add Query</button>
 
-                    <button id="insert-more">Add Query</button>
 
                 </div>
             </div>
@@ -90,31 +91,26 @@
     <script type="text/javascript">
         var rows = 0;
 
-        $("#insert-more").click(function () {
-            $("#mytable").each(function () {
-                var tds = '<tr>';
+        $("#insert-row").click(function () {
+            $("#queryTable").each(function () {
+                var tdrow = '<tr>';
 
                 jQuery.each($('tr:last td', this), function () {
-                    //alert("number of rows now " + rows);
-                    tds += '<td>' + $(this).html() + '</td>';
+                    tdrow += '<td>' + $(this).html() + '</td>';
                 });
 
-                tds += '</tr>';
+                tdrow += '</tr>';
                 if ($('tbody', this).length > 0) {
                     alert("adding 1 to rows so now: " + rows);
                     rows = rows + 1;
-                    if(rows == 0){
-                        //do twice as two entries
-                        tds = tds.replace('instructionArray[0]', 'instructionArray[' + rows + ']');
-                        tds = tds.replace('instructionArray[0]', 'instructionArray[' + rows + ']');
-                    }else{
-                        var prevRows = rows -1;
-                        tds = tds.replace('instructionArray[' + prevRows + ']', 'instructionArray[' + rows + ']');
-                        tds = tds.replace('instructionArray[' + prevRows + ']', 'instructionArray[' + rows + ']');
-                    }
-                    $('tbody', this).append(tds);
+                    var prevRows = rows -1;
+
+                    tdrow = tdrow.replace('instructionArray[' + prevRows + ']', 'instructionArray[' + rows + ']');
+                    tdrow = tdrow.replace('instructionArray[' + prevRows + ']', 'instructionArray[' + rows + ']');
+
+                    $('tbody', this).append(tdrow);
                 } else {
-                    $(this).append(tds);
+                    $(this).append(tdrow);
                 }
             });
         });
