@@ -4,6 +4,7 @@ import gudthing.models.Client;
 import gudthing.models.ClientWithInstruction;
 import gudthing.models.ClientWithSelection;
 import gudthing.models.ClientWithSelectionListWrapper;
+import gudthing.models.spark.ClientWithSparkInstruction;
 import gudthing.models.spark.SingleClientSparkInstruction;
 import gudthing.models.spark.SingleClientSparkInstructionWrapper;
 import gudthing.models.spark.SparkType;
@@ -83,6 +84,7 @@ public class SparkController {
         //so has client 1: instruction, client2: instruction etc
 
         return "QueryController/querySender";
+        //in query sender, i then need to return it to return "SparkController/results";
     }
 
     //   ------------------------------------- GET /spark/{id}-------------------------------------------------
@@ -122,31 +124,32 @@ public class SparkController {
     public String processSingleClient(@ModelAttribute SingleClientSparkInstructionWrapper wrapper, @PathVariable int clientID, Model model) {
 
         Client findClient = clientRepository.findClientByClientID(clientID);
-        //ClientWithInstruction client;
 
         if (wrapper != null && findClient != null) {
             List<SingleClientSparkInstruction> instructions = wrapper.getSparkInstructionArray();
 
-            List<ClientWithInstruction> clientWithSparkInstructions = new ArrayList<ClientWithInstruction>();
+            List<ClientWithSparkInstruction> clientWithSparkInstructions = new ArrayList<ClientWithSparkInstruction>();
 
-//            for(SingleClientSparkInstruction instruction : instructions){
-//                clientWithSparkInstructions.add(new ClientWithSparkInstruction(findClient, instruction.getMessage(), instruction.getInstructionType() ));
-//            }
-//
-//            for(ClientWithInstruction client : clientWithInstructions){
-//                queryHandler(client);
-//            }
+            //iterate over wrapper object and create new singleClientSparkInstruction objects
+            //then add in list
+            for(SingleClientSparkInstruction instruction : instructions){
+                clientWithSparkInstructions.add(new ClientWithSparkInstruction(findClient, instruction));
+            }
 
-            // model.addAttribute("singleClientInstructions", clientWithInstructions);
+            //execute sparkhandler per one //TODO
+            for(ClientWithSparkInstruction client : clientWithSparkInstructions){
+                //queryHandler(client);
+            }
+
+             model.addAttribute("singleClientSparkInstructions", clientWithSparkInstructions);
 
             if (false) {
                 WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
-                //   context.setVariable("singleClientInstructions", clientWithInstructions);
+                context.setVariable("singleClientSparkInstructions", clientWithSparkInstructions);
             }
         }
 
-        //TODO set the page
-        return "QueryController/clientResults";
+        return "SparkController/clientResults";
     }
 
 
