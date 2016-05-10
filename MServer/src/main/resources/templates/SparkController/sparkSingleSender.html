@@ -108,9 +108,10 @@
                     rows = rows + 1;
                     var prevRows = rows -1;
 
-                    //this will need to be adjusted
-                    tdrow = tdrow.replace('instructionArray[' + prevRows + ']', 'instructionArray[' + rows + ']');
-                    tdrow = tdrow.replace('instructionArray[' + prevRows + ']', 'instructionArray[' + rows + ']');
+                    //one for each column
+                    tdrow = tdrow.replace('sparkInstructionArray[' + prevRows + ']', 'sparkInstructionArray[' + rows + ']');
+                    tdrow = tdrow.replace('sparkInstructionArray[' + prevRows + ']', 'sparkInstructionArray[' + rows + ']');
+                    tdrow = tdrow.replace('sparkInstructionArray[' + prevRows + ']', 'sparkInstructionArray[' + rows + ']');
 
                     $('tbody', this).append(tdrow);
                 } else {
