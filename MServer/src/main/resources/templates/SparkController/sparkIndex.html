@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboardLayout" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spark Dashboard</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Spark Manager</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i> <a href="/">Dashboard</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-bar-chart-o"></i> Spark Manager
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!--main area-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Select Clients to Query</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+
+                        <form action="#" th:action="@{/spark/sparkSender}" th:object="${wrapper}" method="post">
+
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                <tr>
+                                    <th style="text-align:center"><input type="checkbox" id="checkAll"/></th>
+                                    <th>Client ID</th>
+                                    <th>IP Address</th>
+                                    <th>Port</th>
+                                    <th>Description</th>
+                                    <th>Query Client</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="currentClient, stat : *{clientList}">
+
+                                    <td th:align="center">
+                                        <input type="checkbox" th:field="*{clientList[__${stat.index}__].selected}" />
+                                        <input type="hidden" th:field="*{clientList[__${stat.index}__].clientID}" />
+                                        <input type="hidden" th:field="*{clientList[__${stat.index}__].ipAddress}" />
+                                        <input type="hidden" th:field="*{clientList[__${stat.index}__].portNumber}" />
+                                        <input type="hidden" th:field="*{clientList[__${stat.index}__].description}" />
+                                    </td>
+                                    <td th:text="${currentClient.getClientID()}"></td>
+                                    <td th:text="${currentClient.getIpAddress()}"></td>
+                                    <td th:text="${currentClient.getPortNumber()}"></td>
+                                    <td th:text="${currentClient.getDescription()}"></td>
+
+                                    <td>
+                                        <a th:href="'/spark/' + ${currentClient.getClientID()}" class="btn btn-primary btn-sm">Spark</a>
+                                        <a th:href="'/clients/' + ${currentClient.getClientID()} + '/details'" class="btn btn-default btn-sm">Details</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <button type="submit" value="submit" class="btn btn-success">Next</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            OK
+        </div>
+    </div>
+
+    <script>
+        $("#checkAll").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+    </script>
+</div>
+</body>
+</html>

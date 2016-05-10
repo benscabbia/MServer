@@ -38,7 +38,7 @@
                                 <tr>
                                     <th style="text-align:center"><input type="checkbox" id="checkAll"/></th>
                                     <th>Client ID</th>
-                                    <th>IP Addresss</th>
+                                    <th>IP Address</th>
                                     <th>Port</th>
                                     <th>Description</th>
                                     <th>Query Client</th>
@@ -61,15 +61,17 @@
 
                                             <td>
                                                 <a th:href="'/query/' + ${currentClient.getClientID()}" class="btn btn-primary btn-sm">Query</a>
+                                                <a th:href="'/spark/' + ${currentClient.getClientID()}" class="btn btn-info btn-sm">Spark</a>
                                                 <a th:href="'/clients/' + ${currentClient.getClientID()} + '/details'" class="btn btn-default btn-sm">Details</a>
                                             </td>
                                         </tr>
                                 </tbody>
                             </table>
 
-                            <button type="submit" value="submit" class="btn btn-success">Next</button>
+                            <button type="submit" value="submit" class="btn btn-primary">Query</button>
 
                         </form>
+                            <button class="btn btn-info">Spark</button>
 
                     </div>
                 </div>
