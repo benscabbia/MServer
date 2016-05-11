@@ -170,7 +170,7 @@ public class QueryController {
         return "QueryController/clientResults";
     }
 
-    //   ------------------------------------- POST /results---------------------------------------------------
+    //   ------------------------------------- POST querySender/results---------------------------------------------------
     @RequestMapping(value="/querySender/results", method = RequestMethod.POST)
     public String sendQuery(@ModelAttribute ClientWithInstructionWrapper instructionWrapper, Model model){
 

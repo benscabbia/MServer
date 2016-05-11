@@ -1,13 +1,9 @@
 package gudthing.controllers;
 
 import gudthing.models.Client;
-import gudthing.models.ClientWithInstruction;
 import gudthing.models.ClientWithSelection;
 import gudthing.models.ClientWithSelectionListWrapper;
-import gudthing.models.spark.ClientWithSparkInstruction;
-import gudthing.models.spark.SingleClientSparkInstruction;
-import gudthing.models.spark.SingleClientSparkInstructionWrapper;
-import gudthing.models.spark.SparkType;
+import gudthing.models.spark.*;
 import gudthing.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,13 +74,52 @@ public class SparkController {
                 int id = client.getClientID();
                 return "redirect:/spark/" + id;
             }
+
+            ArrayList<ClientWithSparkInstruction> allClientsWithSparkInstructions = new ArrayList<ClientWithSparkInstruction>();
+            for (ClientWithSelection clientSelected : allClients) {
+                allClientsWithSparkInstructions.add(new ClientWithSparkInstruction(clientSelected, new SingleClientSparkInstruction("test", SparkType.WORDCOUNT,false)));
+            }
+
+            ClientWithSparkInstructionWrapper sparkInstructionWrapper = new ClientWithSparkInstructionWrapper();
+            sparkInstructionWrapper.setClientList(allClientsWithSparkInstructions);
+
+            model.addAttribute("allClients", allClients);
+            model.addAttribute("sparkInstructionWrapper", sparkInstructionWrapper);
+            model.addAttribute("sparkInstructionTypes", SparkType.values());
+
+            if (false) {
+                WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+                context.setVariable("allClients", allClients);
+                context.setVariable("sparkInstructionWrapper", sparkInstructionWrapper);
+                context.setVariable("sparkInstructionTypes", SparkType.values());
+            }
         }
 
-        //THIS IS WHERE I HANDLE MULTIPLE SPARK CLIENTS QUERIES (equi to /query/querysender)
-        //so has client 1: instruction, client2: instruction etc
-
-        return "QueryController/querySender";
+        return "SparkController/sparkSender";
         //in query sender, i then need to return it to return "SparkController/results";
+    }
+
+    //   ------------------------------------- POST querySender/results---------------------------------------------------
+    @RequestMapping(value="/sparkSender/results", method = RequestMethod.POST)
+    public String sendQuery(@ModelAttribute ClientWithSparkInstructionWrapper sparkInstructionWrapper, Model model){
+
+        List<ClientWithSparkInstruction> clientsWithInstruction = sparkInstructionWrapper.getClientList();
+
+//        for(ClientWithInstruction client : clientsWithInstruction){
+//            queryHandler(client);
+//        }
+//
+//
+//        model.addAttribute("clientsWithInstruction", clientsWithInstruction);
+//        //model.addAttribute("instructionWrapper", instructionWrapper);
+//        System.out.println(instructionWrapper.getClientList() != null ? instructionWrapper.getClientList().size() : "null list");
+//
+//        if(false){
+//            WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+//            context.setVariable("clientsWithInstruction", clientsWithInstruction);
+//        }
+
+        return "QueryController/results";
     }
 
     //   ------------------------------------- GET /spark/{id}-------------------------------------------------

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboardLayout" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Send Spark Queries</title>
+</head>
+<body>
+<div layout:fragment="mainContent">
+    <!-- Page Heading -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Create your multi-client Spark Query</h1>
+            <ol class="breadcrumb">
+                <li>
+                    <i class="fa fa-dashboard"></i>Dashboard
+                </li>
+                <li>
+                    <i class="fa fa-bar-chart-o"></i> <a href="/spark">Spark Manager</a>
+                </li>
+                <li class="active">
+                    <i class="fa fa-bar-chart-o"></i> Spark Query Sender
+                </li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!--main area-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel-body">
+                <div class="table-responsive">
+
+                    <form action="#" th:action="@{/spark/sparkSender/results}" th:object="${sparkInstructionWrapper}" method="post">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Client ID</th>
+                                <th>IP Address</th>
+                                <th>Port</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>File Directory</th>
+                                <th>Sort</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="query, stat : *{clientList}">
+                                <td>
+                                    <span th:text="${query.getClientID()}"></span>
+                                    <input type="hidden" th:field="*{clientList[__${stat.index}__].clientID}" />
+                                    <input type="hidden" th:field="*{clientList[__${stat.index}__].ipAddress}" />
+                                    <input type="hidden" th:field="*{clientList[__${stat.index}__].portNumber}" />
+                                    <input type="hidden" th:field="*{clientList[__${stat.index}__].description}" />
+                                </td>
+                                <!--<td th:text="${query.getClientID()}"></td>-->
+                                <td th:text="${query.getIpAddress()}"></td>
+                                <td th:text="${query.getPortNumber()}"></td>
+                                <td th:text="${query.getDescription()}"></td>
+                                <td>
+                                    <select th:field="*{clientList[__${stat.index}__].singleClientSparkInstruction.sparkType}">
+                                        <option th:each="type, iter : ${sparkInstructionTypes}" th:value="${type}">
+                                            <span th:text="${type}"></span>
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input style="width:100%" type="text" name="filePath" th:field="*{clientList[__${stat.index}__].singleClientSparkInstruction.fileDirectory}"/>
+                                    <!--<textarea style="width:100%" name="message" cols="40" rows="5" th:field="*{clientList[__${stat.index}__].singleClientSparkInstruction.fileDirectory}" ></textarea>-->
+                                </td>
+                                <td>
+                                    <input type="checkbox" name="sorted" th:field="*{clientList[__${stat.index}__].singleClientSparkInstruction.sorted}"/>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <button type="submit" value="submit" class="btn btn-success">Send Spark Queries</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

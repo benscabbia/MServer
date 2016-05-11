@@ -60,19 +60,15 @@
                                             <td th:text="${currentClient.getDescription()}"></td>
 
                                             <td>
-                                                <a th:href="'/query/' + ${currentClient.getClientID()}" class="btn btn-primary btn-sm">Query</a>
-                                                <a th:href="'/spark/' + ${currentClient.getClientID()}" class="btn btn-info btn-sm">Spark</a>
+                                                <a th:href="'/query/' + ${currentClient.getClientID()}" class="btn btn-info btn-sm">Query</a>
+                                                <a th:href="'/spark/' + ${currentClient.getClientID()}" class="btn btn-primary btn-sm">Spark</a>
                                                 <a th:href="'/clients/' + ${currentClient.getClientID()} + '/details'" class="btn btn-default btn-sm">Details</a>
                                             </td>
                                         </tr>
                                 </tbody>
                             </table>
-
-                            <button type="submit" value="submit" class="btn btn-primary">Query</button>
-
+                            <button type="submit" value="submit" class="btn btn-success">Next</button>
                         </form>
-                            <button class="btn btn-info">Spark</button>
-
                     </div>
                 </div>
             </div>

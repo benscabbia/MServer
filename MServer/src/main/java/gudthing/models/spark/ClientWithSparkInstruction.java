@@ -31,5 +31,9 @@ public class ClientWithSparkInstruction extends Client {
         return singleClientSparkInstruction;
     }
 
+    public void setSingleClientSparkInstruction(SingleClientSparkInstruction singleClientSparkInstruction) {
+        this.singleClientSparkInstruction = singleClientSparkInstruction;
+    }
+
     public ClientWithSparkInstruction(){}
 }
