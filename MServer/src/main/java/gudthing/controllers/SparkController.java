@@ -3,6 +3,7 @@ package gudthing.controllers;
 import gudthing.models.Client;
 import gudthing.models.ClientWithSelection;
 import gudthing.models.ClientWithSelectionListWrapper;
+import gudthing.models.QueryHandler;
 import gudthing.models.spark.*;
 import gudthing.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,15 +100,15 @@ public class SparkController {
         //in query sender, i then need to return it to return "SparkController/results";
     }
 
-    //   ------------------------------------- POST querySender/results---------------------------------------------------
+    //   ------------------------------------- POST sparkSender/results---------------------------------------------------
     @RequestMapping(value="/sparkSender/results", method = RequestMethod.POST)
     public String sendQuery(@ModelAttribute ClientWithSparkInstructionWrapper sparkInstructionWrapper, Model model){
 
         List<ClientWithSparkInstruction> clientsWithInstruction = sparkInstructionWrapper.getClientList();
 
-//        for(ClientWithInstruction client : clientsWithInstruction){
-//            queryHandler(client);
-//        }
+        for(ClientWithSparkInstruction client : clientsWithInstruction){
+            sparkHandler(client);
+        }
 //
 //
 //        model.addAttribute("clientsWithInstruction", clientsWithInstruction);
@@ -185,6 +186,31 @@ public class SparkController {
         }
 
         return "SparkController/clientResults";
+    }
+
+
+
+    private void sparkHandler(ClientWithSparkInstruction client) {
+
+        switch(client.getSingleClientSparkInstruction().getSparkType()){
+
+            case WORDSEARCH:
+            case WORDCOUNT:
+                System.out.println("WORDCOUNT");
+
+                Boolean clientConnected = SparkHandler.isConnected(client);
+                if(clientConnected){
+                    System.out.println("CONNECTED");
+
+                    client.setResponse(SparkHandler.wordcountHandLer(client));
+                }
+
+                break;
+
+            default:
+                System.out.println("Default bit");
+                break;
+        }
     }
 
 
