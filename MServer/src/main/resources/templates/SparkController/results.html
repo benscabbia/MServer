@@ -30,31 +30,31 @@
     <!--<td th:text="${client.getIpAddress()}"></td>-->
 
     <!--main area-->
-    <!--<div th:each="theClient : ${clientsWithInstruction}">-->
-        <!--<div class="row">-->
-            <!--<div class="panel panel-default">-->
-                <!--<div class="panel-heading">-->
-                    <!--<h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Client: <span th:text="${theClient.getIpAddress()}"></span></h3>-->
-                <!--</div>-->
-                <!--<div class="panel-body">-->
-                    <!--<table class="table table-bordered table-hover table-striped" style="table-layout: fixed; word-wrap: break-word;" >-->
-                        <!--<thead>-->
-                        <!--<tr>-->
-                            <!--<th class="col-md-2">Instruction Type</th>-->
-                            <!--<th class="col-md-10">Response</th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr>-->
-                            <!--<td th:text="${(theClient.instructionType)}"></td>-->
-                            <!--<td th:text="${(theClient.message.getClientResponse())}"></td>-->
-                        <!--</tr>-->
-                        <!--</tbody>-->
-                    <!--</table>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
+    <div th:each="sparkClient : ${clientsWithSparkInstruction}">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> Client: <span th:text="${sparkClient.getIpAddress()}"></span></h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover table-striped" style="table-layout: fixed; word-wrap: break-word;" >
+                        <thead>
+                        <tr>
+                            <th class="col-md-2">Instruction Type</th>
+                            <th class="col-md-10">Response</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td th:text="${(sparkClient.getSingleClientSparkInstruction().getSparkType())}"></td>
+                            <td th:text="${(sparkClient.getResponse())}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

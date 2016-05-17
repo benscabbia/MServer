@@ -15,15 +15,23 @@ public class SparkHandler {
     public static String wordcountHandLer(ClientWithSparkInstruction clientWithSparkInstruction){
 
         String url = URLService.urlEncoder(clientWithSparkInstruction);
-        url += "/spark"; //adding extra slash for some weird reason
+        String health = url + "/health";
+        url += "/spark";
         url+= SparkType.WORDCOUNT.mapping();
 
         try {
             //EXCEPTION GOT THROWN FIX IT, i think mclient cant accept this post, check ts method
-            ClientWithSparkInstruction response = restTemplate.postForObject(url, clientWithSparkInstruction, ClientWithSparkInstruction.class);
+            //TODO should check if we can connect to client, if NOT, then skip this and write could not connect.
+            //TODO not working for second client, returning empty string check why its not returning string "could not connect..."
 
-            System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-            return response.getResponse();
+            if(URLService.testResponse(health)){
+                ClientWithSparkInstruction response = restTemplate.postForObject(url, clientWithSparkInstruction, ClientWithSparkInstruction.class);
+                System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+                return response.getResponse();
+            }else{
+                return "Could Not connect to the client. Please check the Health of client via Query Wizard.";
+            }
+
         }catch (Exception e){
             System.out.println("EXCEPTION");
             return "EXCEPTION";

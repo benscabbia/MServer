@@ -32,7 +32,6 @@ public class SparkController {
     private ArrayList<ClientWithSelection> allClientsWithSelection;
 
     //   ------------------------------------- GET /spark/-------------------------------------------------
-    //TODO probs should just show an index page here
     @RequestMapping(method= RequestMethod.GET)
     public String index(Model model) {
         //required to remove thymeleaf error
@@ -76,6 +75,7 @@ public class SparkController {
                 return "redirect:/spark/" + id;
             }
 
+            //more than one client selected, multi-client spark query
             ArrayList<ClientWithSparkInstruction> allClientsWithSparkInstructions = new ArrayList<ClientWithSparkInstruction>();
             for (ClientWithSelection clientSelected : allClients) {
                 allClientsWithSparkInstructions.add(new ClientWithSparkInstruction(clientSelected, new SingleClientSparkInstruction("test", SparkType.WORDCOUNT,false)));
@@ -109,6 +109,15 @@ public class SparkController {
         for(ClientWithSparkInstruction client : clientsWithInstruction){
             sparkHandler(client);
         }
+
+//        model.addAttribute("singleClientSparkInstructions", clientWithSparkInstructions);
+//
+
+        model.addAttribute("clientsWithSparkInstruction", clientsWithInstruction);
+        if (false) {
+            WebContext context = new org.thymeleaf.context.WebContext(null, null, null);
+            context.setVariable("clientsWithSparkInstruction", clientsWithInstruction);
+        }
 //
 //
 //        model.addAttribute("clientsWithInstruction", clientsWithInstruction);
@@ -120,9 +129,10 @@ public class SparkController {
 //            context.setVariable("clientsWithInstruction", clientsWithInstruction);
 //        }
 
-        return "QueryController/results";
+        return "SparkController/results";
     }
 
+    //Single Client exercution
     //   ------------------------------------- GET /spark/{id}-------------------------------------------------
     @RequestMapping(value="/{clientID}", method=RequestMethod.GET)
     public String getClient(@PathVariable int clientID, Model model) {
@@ -172,9 +182,9 @@ public class SparkController {
                 clientWithSparkInstructions.add(new ClientWithSparkInstruction(findClient, instruction));
             }
 
-            //execute sparkhandler per one //TODO
+            //execute spark handler per client query (1 client)
             for(ClientWithSparkInstruction client : clientWithSparkInstructions){
-                //queryHandler(client);
+                sparkHandler(client);
             }
 
              model.addAttribute("singleClientSparkInstructions", clientWithSparkInstructions);
@@ -195,6 +205,7 @@ public class SparkController {
         switch(client.getSingleClientSparkInstruction().getSparkType()){
 
             case WORDSEARCH:
+                //TODO wordsearch implementaiton
             case WORDCOUNT:
                 System.out.println("WORDCOUNT");
 
