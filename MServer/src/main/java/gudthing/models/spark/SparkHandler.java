@@ -12,29 +12,30 @@ public class SparkHandler {
     private static RestTemplate restTemplate = new RestTemplate();
 
     //WORDCOUNT, WORDSEARCH
-    public static String wordcountHandLer(ClientWithSparkInstruction clientWithSparkInstruction){
+    public static void wordcountHandLer(ClientWithSparkInstruction clientWithSparkInstruction){
 
         String url = URLService.urlEncoder(clientWithSparkInstruction);
         String health = url + "/health";
         url += "/spark";
-        url+= SparkType.WORDCOUNT.mapping();
+        //url+= SparkType.WORDCOUNT.mapping();
 
         try {
-            //EXCEPTION GOT THROWN FIX IT, i think mclient cant accept this post, check ts method
-            //TODO should check if we can connect to client, if NOT, then skip this and write could not connect.
-            //TODO not working for second client, returning empty string check why its not returning string "could not connect..."
 
-            if(URLService.testResponse(health)){
+            if(isConnected(clientWithSparkInstruction)){
                 ClientWithSparkInstruction response = restTemplate.postForObject(url, clientWithSparkInstruction, ClientWithSparkInstruction.class);
                 System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-                return response.getResponse();
+                clientWithSparkInstruction.setResponse(response.getResponse());
+                //return response.getResponse();
+                return;
             }else{
-                return "Could Not connect to the client. Please check the Health of client via Query Wizard.";
+                clientWithSparkInstruction.setResponse("Could Not connect to the client. Please check the Health of client via Query Wizard.");
+                return;
             }
 
         }catch (Exception e){
             System.out.println("EXCEPTION");
-            return "EXCEPTION";
+            clientWithSparkInstruction.setResponse("EXCEPTION occured when trying to communicate with MCLient");
+            return;
         }
     }
 

@@ -202,26 +202,23 @@ public class SparkController {
 
     private void sparkHandler(ClientWithSparkInstruction client) {
 
-        switch(client.getSingleClientSparkInstruction().getSparkType()){
+        SparkHandler.wordcountHandLer(client);
 
-            case WORDSEARCH:
-                //TODO wordsearch implementaiton
-            case WORDCOUNT:
-                System.out.println("WORDCOUNT");
 
-                Boolean clientConnected = SparkHandler.isConnected(client);
-                if(clientConnected){
-                    System.out.println("CONNECTED");
-
-                    client.setResponse(SparkHandler.wordcountHandLer(client));
-                }
-
-                break;
-
-            default:
-                System.out.println("Default bit");
-                break;
-        }
+//        switch(client.getSingleClientSparkInstruction().getSparkType()){
+//
+//            case WORDSEARCH:
+//                //TODO wordsearch implementaiton
+//            case WORDCOUNT:
+//                System.out.println("WORDCOUNT");
+//
+//                SparkHandler.wordcountHandLer(client);
+//                break;
+//
+//            default:
+//                System.out.println("Default bit");
+//                break;
+//        }
     }
 
 
