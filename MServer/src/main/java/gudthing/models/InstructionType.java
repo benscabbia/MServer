@@ -8,7 +8,8 @@ public enum InstructionType {
     HEALTH("/health"),
     INFO("/info"),
     METRICS("/metrics"),
-    QUERY("/query"),
+    QUERY_MYSQL("/query"),
+    QUERY_MONGO("/query"),
     SHUTDOWN("/shutdown");
 
     private String mapping;

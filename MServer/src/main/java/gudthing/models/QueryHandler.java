@@ -55,21 +55,34 @@ public class QueryHandler {
 
     public static String queryHandler(ClientWithInstruction clientWithInstruction){
         String url = URLService.urlEncoder(clientWithInstruction);
-        url+= InstructionType.QUERY.mapping();
-         url += "/sqlDatabase";
+        url+= InstructionType.QUERY_MYSQL.mapping();
+        url += "/sqlDatabase";
 
         try {
 
             Message instruction = clientWithInstruction.getMessage();
             Message response = restTemplate.postForObject(url, instruction, Message.class);
-
-            System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             return response.getClientResponse();
         }catch (Exception e){
             System.out.println("EXCEPTION");
-            return "EXCEPTION";
+            return "EXCEPTION: " + e.getStackTrace()[0];
         }
 
+    };
+
+    public static String queryMongoHandler(ClientWithInstruction clientWithInstruction) {
+        String url = URLService.urlEncoder(clientWithInstruction);
+        url+= InstructionType.QUERY_MONGO.mapping();
+        url += "/nosqlDatabase";
+
+        try{
+            Message instruction = clientWithInstruction.getMessage();
+            Message response = restTemplate.postForObject(url, instruction, Message.class);
+            return response.getClientResponse();
+        }catch (Exception e){
+            System.out.println("EXCEPTION");
+            return "EXCEPTION: " + e.getStackTrace()[0];
+        }
     };
 
     public static String shutdownHandler(ClientWithInstruction clientWithInstruction){
@@ -92,6 +105,8 @@ public class QueryHandler {
             }
 
     };
+
+
 
 
 }

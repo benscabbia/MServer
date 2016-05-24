@@ -12,7 +12,7 @@ public class SparkHandler {
     private static RestTemplate restTemplate = new RestTemplate();
 
     //WORDCOUNT, WORDSEARCH
-    public static void wordcountHandLer(ClientWithSparkInstruction clientWithSparkInstruction){
+    public static void handleRequest(ClientWithSparkInstruction clientWithSparkInstruction){
 
         String url = URLService.urlEncoder(clientWithSparkInstruction);
         String health = url + "/health";

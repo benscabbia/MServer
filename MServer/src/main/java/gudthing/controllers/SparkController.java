@@ -3,7 +3,6 @@ package gudthing.controllers;
 import gudthing.models.Client;
 import gudthing.models.ClientWithSelection;
 import gudthing.models.ClientWithSelectionListWrapper;
-import gudthing.models.QueryHandler;
 import gudthing.models.spark.*;
 import gudthing.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -202,7 +201,7 @@ public class SparkController {
 
     private void sparkHandler(ClientWithSparkInstruction client) {
 
-        SparkHandler.wordcountHandLer(client);
+        SparkHandler.handleRequest(client);
 
 
 //        switch(client.getSingleClientSparkInstruction().getSparkType()){
@@ -212,7 +211,7 @@ public class SparkController {
 //            case WORDCOUNT:
 //                System.out.println("WORDCOUNT");
 //
-//                SparkHandler.wordcountHandLer(client);
+//                SparkHandler.handleRequest(client);
 //                break;
 //
 //            default:

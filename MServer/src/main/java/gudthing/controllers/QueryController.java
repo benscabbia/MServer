@@ -223,9 +223,14 @@ public class QueryController {
                 client.message.setClientResponse(QueryHandler.metricsHandler(client));
                 break;
 
-            case QUERY:
-                System.out.println("QUERY");
+            case QUERY_MYSQL:
+                System.out.println("QUERY MYSQL");
                 client.message.setClientResponse(QueryHandler.queryHandler(client));
+                break;
+
+            case QUERY_MONGO:
+                System.out.println("QUERY MONGO ");
+                client.message.setClientResponse(QueryHandler.queryMongoHandler(client));
                 break;
 
             case SHUTDOWN:
@@ -289,8 +294,8 @@ public class QueryController {
 //                    client.message.setClientResponse(QueryHandler.metricsHandler(client));
 //                    break;
 //
-//                case QUERY:
-//                    System.out.println("QUERY");
+//                case QUERY_MYSQL:
+//                    System.out.println("QUERY_MYSQL");
 //                    client.message.setClientResponse(QueryHandler.queryHandler(client));
 //                    break;
 //
