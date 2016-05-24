@@ -1,6 +1,6 @@
 <!--new pages should be based on this page-->
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboardLayout">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/dashboardLayout" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>MServer</title>
 </head>
@@ -14,7 +14,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li class="active">
-                    <i class="fa fa-dashboard"></i> Dashboard
+                    <i class="fa fa-dashboard"></i> Session Data
                 </li>
             </ol>
         </div>
@@ -32,14 +32,14 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
-                            <div>New Comments!</div>
+                            <div class="huge"> <label th:text="${clientCount}"></label></div>
+                            <div>MClients</div>
                         </div>
                     </div>
                 </div>
                 <a href="#">
                     <div class="panel-footer">
-                        <span class="pull-left">View Details</span>
+                        <span class="pull-left">View Clients</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                         <div class="clearfix"></div>
                     </div>
@@ -55,8 +55,8 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
-                            <div>New Tasks!</div>
+                            <div class="huge"><label th:text="${successOperation}"></label></div>
+                            <div>Successfully Sent Queries</div>
                         </div>
                     </div>
                 </div>
@@ -77,8 +77,8 @@
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">124</div>
-                            <div>New Orders!</div>
+                            <div class="huge"><label th:text="${queryExceptionOperation}"></label></div>
+                            <div>Query Exception</div>
                         </div>
                     </div>
                 </div>
@@ -99,8 +99,8 @@
                             <i class="fa fa-support fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
-                            <div>Support Tickets!</div>
+                            <div class="huge"><label th:text="${failureOperation}"></label></div>
+                            <div>Server Errors</div>
                         </div>
                     </div>
                 </div>

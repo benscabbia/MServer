@@ -3,6 +3,8 @@ package gudthing.models.spark;
 import gudthing.models.InstructionModels.Health;
 import gudthing.models.InstructionType;
 import gudthing.models.URLService;
+import gudthing.property.SessionExceptionOperation;
+import gudthing.property.SessionFailureOperation;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -25,6 +27,7 @@ public class SparkHandler {
                 ClientWithSparkInstruction response = restTemplate.postForObject(url, clientWithSparkInstruction, ClientWithSparkInstruction.class);
                 System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                 clientWithSparkInstruction.setResponse(response.getResponse());
+                checkForException(response.getResponse());
                 //return response.getResponse();
                 return;
             }else{
@@ -35,6 +38,7 @@ public class SparkHandler {
         }catch (Exception e){
             System.out.println("EXCEPTION");
             clientWithSparkInstruction.setResponse("EXCEPTION occured when trying to communicate with MCLient");
+            SessionFailureOperation.incrementCounter();
             return;
         }
     }
@@ -58,4 +62,10 @@ public class SparkHandler {
         }
     }
 
-}
+    private static void checkForException(String response) {
+        if(response.toLowerCase().contains("exception") || response.toLowerCase().contains("error")){
+            SessionExceptionOperation.incrementCounter();
+        }
+    }
+
+};

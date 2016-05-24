@@ -39,15 +39,6 @@ public class ClientController {
         return "clients";
     }
 
-    //  ---------------------------------------GET /{id}/details-------------------------------------------------
-    @RequestMapping(value="/{clientID}/details", method = RequestMethod.GET)
-    public String getClientDetails(@PathVariable int clientID, Model model){
-        Client client = clientRepository.findClientByClientID(clientID);
-        model.addAttribute("client", client);
-        //TODO details page is to be completed
-        return "viewClient";
-    }
-
     //  ---------------------------------------GET /Create-------------------------------------------------------
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String addNewClientForm(Model model){
@@ -99,7 +90,6 @@ public class ClientController {
             editClient.portNumber = client.portNumber;
             editClient.description = client.description;
             clientRepository.saveAndFlush(editClient);
-            //TODO need to give the option to update the other properties
             return "redirect:/clients";
         }
     }

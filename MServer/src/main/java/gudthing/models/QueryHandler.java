@@ -2,6 +2,9 @@ package gudthing.models;
 
 import gudthing.models.InstructionModels.Health;
 import gudthing.models.InstructionModels.Metric;
+import gudthing.property.SessionExceptionOperation;
+import gudthing.property.SessionFailureOperation;
+import gudthing.property.SessionSuccessOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -62,13 +65,21 @@ public class QueryHandler {
 
             Message instruction = clientWithInstruction.getMessage();
             Message response = restTemplate.postForObject(url, instruction, Message.class);
+            SessionSuccessOperations.incrementCounter();
+
+            checkForException(response.getClientResponse());
             return response.getClientResponse();
         }catch (Exception e){
             System.out.println("EXCEPTION");
+            SessionFailureOperation.incrementCounter();
             return "EXCEPTION: " + e.getStackTrace()[0];
         }
 
-    };
+    }
+
+
+
+    ;
 
     public static String queryMongoHandler(ClientWithInstruction clientWithInstruction) {
         String url = URLService.urlEncoder(clientWithInstruction);
@@ -78,49 +89,43 @@ public class QueryHandler {
         try{
             Message instruction = clientWithInstruction.getMessage();
             Message response = restTemplate.postForObject(url, instruction, Message.class);
+            SessionSuccessOperations.incrementCounter();
+            checkForException(response.getClientResponse());
             return response.getClientResponse();
         }catch (Exception e){
             System.out.println("EXCEPTION");
+            SessionFailureOperation.incrementCounter();
             return "EXCEPTION: " + e.getStackTrace()[0];
         }
     };
 
-    public static String shutdownHandler(ClientWithInstruction clientWithInstruction){
+    public static String shutdownHandler(ClientWithInstruction clientWithInstruction) {
         String url = URLService.urlEncoder(clientWithInstruction);
-        url+= InstructionType.SHUTDOWN.mapping();
+        url += InstructionType.SHUTDOWN.mapping();
 
-            try{
-                System.out.println(url);
-                ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
-                HttpStatus status = response.getStatusCode();
-                System.out.println(status);
+        try {
+            System.out.println(url);
+            ResponseEntity<String> response = restTemplate.postForEntity(url, null, String.class);
+            HttpStatus status = response.getStatusCode();
+            System.out.println(status);
 
-                if(status == HttpStatus.OK ){
-                    return "The client has been shut down successfully.";
-                }else{
-                    return "There was an error: '"+ status.toString() + "'. Could not shut client down";
-                }
-            }catch (Exception e){
-                return "There was an error. Probable cause is that system is unable to connect to client, please try run a HEALTH command";
+            if (status == HttpStatus.OK) {
+                SessionSuccessOperations.incrementCounter();
+                return "The client has been shut down successfully.";
+            } else {
+                SessionFailureOperation.incrementCounter();
+                return "There was an error: '" + status.toString() + "'. Could not shut client down";
             }
+        } catch (Exception e) {
+            SessionFailureOperation.incrementCounter();
+            return "There was an error. Probable cause is that system is unable to connect to client, please try run a HEALTH command";
+        }
 
-    };
+    }
 
-
-
-
-}
-
-/*
-* RestTemplate restTemplate = new RestTemplate();
-//            String url = firstClient.getIpAddress() + ":" + firstClient.getPortNumber();
-//
-//            String workingUrl = "http://192.168.1.151:8080";
-//            System.out.println(url);
-//            Message message = restTemplate.getForObject(workingUrl, Message.class);
-//
-//            System.out.println("#####################################TOSTRING##############################");
-//            System.out.println(message.toString());
-//
-//            model.addAttribute("message", message);
-* */
+    private static void checkForException(String response) {
+        if(response.toLowerCase().contains("exception") || response.toLowerCase().contains("error")){
+            SessionExceptionOperation.incrementCounter();
+        }
+    }
+};

@@ -49,10 +49,6 @@
                                 <td th:text="${client.getPortNumber()}"></td>
                                 <td th:text="${client.getDescription()}"></td>
                                 <td>
-                                    <form th:action="'/clients/' + ${client.getClientID()} + '/details'" style="display: inline">
-                                        <input type="submit" th:value="View" class="btn-sm btn-success" role="button" />
-                                    </form>
-
                                     <form th:action="'/clients/' + ${client.getClientID()}" style="display: inline">
                                         <input type="submit" th:value="Edit" class="btn-sm btn-warning" role="button" />
                                     </form>
