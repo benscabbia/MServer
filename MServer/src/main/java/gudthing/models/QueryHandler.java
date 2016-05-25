@@ -2,9 +2,9 @@ package gudthing.models;
 
 import gudthing.models.InstructionModels.Health;
 import gudthing.models.InstructionModels.Metric;
-import gudthing.property.SessionExceptionOperation;
-import gudthing.property.SessionFailureOperation;
-import gudthing.property.SessionSuccessOperations;
+import gudthing.properties.SessionExceptionOperation;
+import gudthing.properties.SessionFailureOperation;
+import gudthing.properties.SessionSuccessOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;

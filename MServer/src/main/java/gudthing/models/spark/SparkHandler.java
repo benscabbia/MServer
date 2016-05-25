@@ -3,8 +3,8 @@ package gudthing.models.spark;
 import gudthing.models.InstructionModels.Health;
 import gudthing.models.InstructionType;
 import gudthing.models.URLService;
-import gudthing.property.SessionExceptionOperation;
-import gudthing.property.SessionFailureOperation;
+import gudthing.properties.SessionExceptionOperation;
+import gudthing.properties.SessionFailureOperation;
 import org.springframework.web.client.RestTemplate;
 
 /**

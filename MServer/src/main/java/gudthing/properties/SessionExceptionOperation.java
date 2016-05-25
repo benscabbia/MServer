@@ -1,4 +1,4 @@
-package gudthing.property;
+package gudthing.properties;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

@@ -1,9 +1,9 @@
 package gudthing.controllers;
 
 import gudthing.models.Client;
-import gudthing.property.SessionExceptionOperation;
-import gudthing.property.SessionFailureOperation;
-import gudthing.property.SessionSuccessOperations;
+import gudthing.properties.SessionExceptionOperation;
+import gudthing.properties.SessionFailureOperation;
+import gudthing.properties.SessionSuccessOperations;
 import gudthing.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,4 +48,10 @@ public class HomeController {
 
         return "index";
     }
+
+    @RequestMapping(value = "login", method= RequestMethod.GET)
+    String showLogin(){
+        return "login";
+    }
+
 }
