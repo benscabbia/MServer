@@ -54,4 +54,9 @@ public class HomeController {
         return "login";
     }
 
+    @RequestMapping(value = "login", method= RequestMethod.POST)
+    String loggedIn(){
+        return "/";
+    }
+
 }
