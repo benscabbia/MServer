@@ -7,6 +7,8 @@ import gudthing.properties.SessionFailureOperation;
 import gudthing.properties.SessionSuccessOperations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -15,7 +17,15 @@ import org.springframework.web.client.RestTemplate;
 public class QueryHandler {
 
 
-    private static RestTemplate restTemplate = new RestTemplate();
+    private static RestTemplate restTemplate = new RestTemplate(getClientHttpRequestFactory());
+
+    private static ClientHttpRequestFactory getClientHttpRequestFactory() {
+        int timeout = 3000;
+        HttpComponentsClientHttpRequestFactory clientHttpRequestFactory =
+                new HttpComponentsClientHttpRequestFactory();
+        clientHttpRequestFactory.setConnectTimeout(timeout);
+        return clientHttpRequestFactory;
+    }
 
 
     public static boolean healthHandLer(ClientWithInstruction clientWithInstruction){

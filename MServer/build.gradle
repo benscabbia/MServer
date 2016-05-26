@@ -34,6 +34,8 @@ dependencies {
 	compile("com.h2database:h2")
 	compile('mysql:mysql-connector-java')
 
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.2'
+
 	//spring security
 	compile("org.springframework.boot:spring-boot-starter-security")
 

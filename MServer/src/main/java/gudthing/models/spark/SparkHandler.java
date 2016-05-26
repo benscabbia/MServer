@@ -5,13 +5,23 @@ import gudthing.models.InstructionType;
 import gudthing.models.URLService;
 import gudthing.properties.SessionExceptionOperation;
 import gudthing.properties.SessionFailureOperation;
+import org.springframework.http.client.ClientHttpRequestFactory;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
 /**
  * Created by Ben on 12/05/2016.
  */
 public class SparkHandler {
-    private static RestTemplate restTemplate = new RestTemplate();
+    private static RestTemplate restTemplate = new RestTemplate(getClientHttpRequestFactory());
+
+    private static ClientHttpRequestFactory getClientHttpRequestFactory() {
+        int timeout = 3000;
+        HttpComponentsClientHttpRequestFactory clientHttpRequestFactory =
+                new HttpComponentsClientHttpRequestFactory();
+        clientHttpRequestFactory.setConnectTimeout(timeout);
+        return clientHttpRequestFactory;
+    }
 
     //WORDCOUNT, WORDSEARCH
     public static void handleRequest(ClientWithSparkInstruction clientWithSparkInstruction){
