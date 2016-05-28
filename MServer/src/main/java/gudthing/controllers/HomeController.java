@@ -34,7 +34,6 @@ public class HomeController {
         model.addAttribute("failureOperation", SessionFailureOperation.getCounter());
         model.addAttribute("queryExceptionOperation", SessionExceptionOperation.getCounter());
 
-
         //required to remove thymeleaf error
         if(false){
             WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
@@ -43,10 +42,44 @@ public class HomeController {
             context.setVariable("failureOperation", SessionFailureOperation.getCounter());
             context.setVariable("queryExceptionOperation", SessionExceptionOperation.getCounter());
         }
-
-
-
         return "index";
+    }
+
+    @RequestMapping(value = "/sessiondata/success", method= RequestMethod.GET)
+    String displaySuccessfulSessionData(Model model){
+
+        model.addAttribute("sessions", SessionSuccessOperations.getSessionData());
+
+        if(false){
+            WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+            context.setVariable("sessions", SessionSuccessOperations.getSessionData());
+        }
+        return "sessionData";
+    }
+
+    @RequestMapping(value = "/sessiondata/exception", method= RequestMethod.GET)
+    String displayUnsuccessfulSessionData(Model model){
+
+        model.addAttribute("sessions", SessionSuccessOperations.getSessionData());
+
+        if(false){
+            WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+            context.setVariable("sessions", SessionSuccessOperations.getSessionData());
+        }
+        return "sessionData";
+    }
+
+    @RequestMapping(value = "/sessiondata/failure", method= RequestMethod.GET)
+    String displayFailureSessionData(Model model){
+
+        model.addAttribute("sessions", SessionSuccessOperations.getSessionData());
+
+        if(false){
+            WebContext context = new org.thymeleaf.context.WebContext(null,null,null);
+            context.setVariable("sessions", SessionSuccessOperations.getSessionData());
+        }
+
+        return "sessionData";
     }
 
     @RequestMapping(value = "login", method= RequestMethod.GET)

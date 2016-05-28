@@ -212,12 +212,6 @@ public class QueryController {
                 }
                 break;
 
-            case INFO:
-                System.out.println("info");
-                //TODO info
-                break;
-
-
             case METRICS:
                 System.out.println("METRICS");
                 client.message.setClientResponse(QueryHandler.metricsHandler(client));
@@ -242,69 +236,5 @@ public class QueryController {
                 System.out.println("Default bit");
                 break;
         }
-
     }
-
 }
-
-//TESTING PURPOSES
-//            ClientWithSelection firstClient = allClients.get(0);
-//            System.out.println("#####################################TESTING##############################");
-//            System.out.println(firstClient.toString());
-
-
-//TESTING
-//            RestTemplate restTemplate = new RestTemplate();
-//            String url = firstClient.getIpAddress() + ":" + firstClient.getPortNumber();
-//
-//            String workingUrl = "http://192.168.1.151:8080";
-//            System.out.println(url);
-//            Message message = restTemplate.getForObject(workingUrl, Message.class);
-//
-//            System.out.println("#####################################TOSTRING##############################");
-//            System.out.println(message.toString());
-//
-//            model.addAttribute("message", message);
-
-//required to remove thymeleaf error
-
-//KEPT INcase of bug in method
-//            switch(client.getInstructionType()){
-//
-//                case DEFAULT:
-//                case HEALTH:
-//                    System.out.println("HEALTH");
-//
-//                    Boolean clientConnected = QueryHandler.healthHandLer(client);
-//
-//                    if(Boolean.TRUE.equals(clientConnected)) {
-//                        client.message.setClientResponse("The Client is Connected");
-//                    }else{
-//                        client.message.setClientResponse("The Client is Disconnected");
-//                    }
-//                    break;
-//
-//                case INFO:
-//                    System.out.println("info");
-//                    //TODO info
-//                    break;
-//
-//                case METRICS:
-//                    System.out.println("METRICS");
-//                    client.message.setClientResponse(QueryHandler.metricsHandler(client));
-//                    break;
-//
-//                case QUERY_MYSQL:
-//                    System.out.println("QUERY_MYSQL");
-//                    client.message.setClientResponse(QueryHandler.queryHandler(client));
-//                    break;
-//
-//                case SHUTDOWN:
-//                    System.out.println("SHUWDOWN");
-//                    client.message.setClientResponse(QueryHandler.shutdownHandler(client));
-//                    break;
-//
-//                default:
-//                    System.out.println("Default bit");
-//                    break;
-//            }

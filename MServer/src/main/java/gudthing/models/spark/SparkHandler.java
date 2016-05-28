@@ -5,6 +5,7 @@ import gudthing.models.InstructionType;
 import gudthing.models.URLService;
 import gudthing.properties.SessionExceptionOperation;
 import gudthing.properties.SessionFailureOperation;
+import gudthing.properties.SessionSuccessOperations;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
@@ -39,14 +40,17 @@ public class SparkHandler {
                 clientWithSparkInstruction.setResponse(response.getResponse());
                 checkForException(response.getResponse());
                 //return response.getResponse();
+                SessionSuccessOperations.incrementCounter();
                 return;
             }else{
+                SessionExceptionOperation.incrementCounter();
                 clientWithSparkInstruction.setResponse("Could Not connect to the client. Please check the Health of client via Query Wizard.");
                 return;
             }
 
         }catch (Exception e){
             System.out.println("EXCEPTION");
+            SessionFailureOperation.incrementCounter();
             clientWithSparkInstruction.setResponse("EXCEPTION occured when trying to communicate with MCLient");
             SessionFailureOperation.incrementCounter();
             return;

@@ -2,9 +2,7 @@ package gudthing.models;
 
 import gudthing.models.InstructionModels.Health;
 import gudthing.models.InstructionModels.Metric;
-import gudthing.properties.SessionExceptionOperation;
-import gudthing.properties.SessionFailureOperation;
-import gudthing.properties.SessionSuccessOperations;
+import gudthing.properties.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -32,7 +30,12 @@ public class QueryHandler {
         String url = URLService.urlEncoder(clientWithInstruction);
         url+= InstructionType.HEALTH.mapping();
 
+        String ip = clientWithInstruction.getIpAddress();
+        String type = clientWithInstruction.getInstructionType().toString();
+
+
         boolean connected = URLService.testResponse(url);
+        SessionSuccessOperations.incrementCounter();
 
         if(connected){
             Health health = restTemplate.getForObject(url, Health.class);
@@ -44,7 +47,6 @@ public class QueryHandler {
         }else{
             return false;
         }
-
     };
 
     public static void infoHandler(ClientWithInstruction clientWithInstruction){
@@ -57,13 +59,18 @@ public class QueryHandler {
         url+= InstructionType.METRICS.mapping();
         boolean connected = URLService.testResponse(url);
 
+
         if(connected){
             Metric metrics = restTemplate.getForObject(url, Metric.class);
             System.out.println(metrics);
+            SessionSuccessOperations.incrementCounter();
             return metrics.toString();
+        }else {
+            String temp = "Unable to retrieve information";
+            SessionExceptionOperation.incrementCounter();
+            return temp;
         }
 
-        return "Unable to retrieve information";
     };
 
     public static String queryHandler(ClientWithInstruction clientWithInstruction){
@@ -75,21 +82,21 @@ public class QueryHandler {
 
             Message instruction = clientWithInstruction.getMessage();
             Message response = restTemplate.postForObject(url, instruction, Message.class);
-            SessionSuccessOperations.incrementCounter();
 
-            checkForException(response.getClientResponse());
+            if(!checkForException(response.getClientResponse(), clientWithInstruction.getInstructionType().toString(), clientWithInstruction.getIpAddress())){
+                SessionSuccessOperations.incrementCounter();
+            }else{
+                SessionExceptionOperation.incrementCounter();
+            };
             return response.getClientResponse();
         }catch (Exception e){
             System.out.println("EXCEPTION");
+            String temp ="EXCEPTION: " + e.getStackTrace()[0];
             SessionFailureOperation.incrementCounter();
-            return "EXCEPTION: " + e.getStackTrace()[0];
+            return temp;
         }
 
-    }
-
-
-
-    ;
+    };
 
     public static String queryMongoHandler(ClientWithInstruction clientWithInstruction) {
         String url = URLService.urlEncoder(clientWithInstruction);
@@ -99,13 +106,18 @@ public class QueryHandler {
         try{
             Message instruction = clientWithInstruction.getMessage();
             Message response = restTemplate.postForObject(url, instruction, Message.class);
-            SessionSuccessOperations.incrementCounter();
-            checkForException(response.getClientResponse());
+
+            if(!checkForException(response.getClientResponse(), clientWithInstruction.getInstructionType().toString(), clientWithInstruction.getIpAddress())){
+                SessionSuccessOperations.incrementCounter();
+            }else{
+                SessionExceptionOperation.incrementCounter();
+            };
             return response.getClientResponse();
         }catch (Exception e){
             System.out.println("EXCEPTION");
+            String temp = "EXCEPTION: " + e.getStackTrace()[0];
             SessionFailureOperation.incrementCounter();
-            return "EXCEPTION: " + e.getStackTrace()[0];
+            return temp;
         }
     };
 
@@ -120,22 +132,28 @@ public class QueryHandler {
             System.out.println(status);
 
             if (status == HttpStatus.OK) {
+                String temp = "The client has been shut down successfully.";
                 SessionSuccessOperations.incrementCounter();
                 return "The client has been shut down successfully.";
             } else {
-                SessionFailureOperation.incrementCounter();
-                return "There was an error: '" + status.toString() + "'. Could not shut client down";
+                String temp = "There was an error: '" + status.toString() + "'. Could not shut client down";
+                SessionExceptionOperation.incrementCounter();
+                return temp;
             }
         } catch (Exception e) {
+            String temp = "There was an error. Probable cause is that system is unable to connect to client, please try run a HEALTH command. ";
             SessionFailureOperation.incrementCounter();
-            return "There was an error. Probable cause is that system is unable to connect to client, please try run a HEALTH command";
+            return temp;
         }
 
     }
 
-    private static void checkForException(String response) {
-        if(response.toLowerCase().contains("exception") || response.toLowerCase().contains("error")){
-            SessionExceptionOperation.incrementCounter();
+    private static boolean checkForException(String response, String type, String targetMachineIP) {
+        if(response != null && (response.toLowerCase().contains("exception") || response.toLowerCase().contains("error"))){
+            return true;
         }
+        return false;
     }
+
+
 };

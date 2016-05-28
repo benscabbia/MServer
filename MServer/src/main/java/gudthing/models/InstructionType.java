@@ -6,7 +6,6 @@ package gudthing.models;
 public enum InstructionType {
     DEFAULT("/health"),
     HEALTH("/health"),
-    INFO("/info"),
     METRICS("/metrics"),
     QUERY_MYSQL("/query"),
     QUERY_MONGO("/query"),
