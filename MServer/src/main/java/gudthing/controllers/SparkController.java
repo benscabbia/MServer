@@ -77,7 +77,7 @@ public class SparkController {
             //more than one client selected, multi-client spark query
             ArrayList<ClientWithSparkInstruction> allClientsWithSparkInstructions = new ArrayList<ClientWithSparkInstruction>();
             for (ClientWithSelection clientSelected : allClients) {
-                allClientsWithSparkInstructions.add(new ClientWithSparkInstruction(clientSelected, new SingleClientSparkInstruction("test", SparkType.WORDCOUNT,false)));
+                allClientsWithSparkInstructions.add(new ClientWithSparkInstruction(clientSelected, new SingleClientSparkInstruction("", SparkType.WORDCOUNT,false)));
             }
 
             ClientWithSparkInstructionWrapper sparkInstructionWrapper = new ClientWithSparkInstructionWrapper();

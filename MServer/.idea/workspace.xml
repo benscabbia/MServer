@@ -151,33 +151,109 @@
     <favorites_list name="MServer" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="InstructionType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/InstructionType.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="sparkSingleSender.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkSingleSender.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state vertical-scroll-proportion="4.1538463">
+              <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QueryHandler.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/QueryHandler.java">
+      <file leaf-file-name="querySingleSender.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/QueryController/querySingleSender.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QueryController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/controllers/QueryController.java">
+      <file leaf-file-name="queryIndex.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/QueryController/queryIndex.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.4406549">
-              <caret line="237" column="9" selection-start-line="237" selection-start-column="9" selection-end-line="237" selection-end-column="9" />
+            <state vertical-scroll-proportion="-20.346153">
+              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sparkIndex.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkIndex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.115385">
+              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JAVA/gudthing.models.Client" pinned="false" current-in-tab="true">
+        <entry file="uml://JAVA/gudthing.models.Client">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>gudthing.models.Client</OriginalElement>
+              <nodes>
+                <node x="-256.0" y="82.0">gudthing.models.spark.ClientWithSparkInstructionWrapper</node>
+                <node x="243.5" y="80.0">gudthing.models.ClientWithInstruction</node>
+                <node x="-464.0" y="86.0">gudthing.models.spark.SingleClientSparkInstruction</node>
+                <node x="180.25" y="-94.0">gudthing.models.Client</node>
+                <node x="0.0" y="160.0">gudthing.models.ClientWithSelectionListWrapper</node>
+                <node x="430.0" y="328.0">gudthing.models.spark.SparkHandler</node>
+                <node x="-393.0" y="-80.0">gudthing.models.spark.ClientWithSparkInstruction</node>
+                <node x="221.0" y="160.0">gudthing.models.ClientWithInstructionWrapper</node>
+                <node x="31.5" y="80.0">gudthing.models.ClientWithSelection</node>
+                <node x="-476.0" y="200.0">gudthing.models.spark.SingleClientSparkInstructionWrapper</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="gudthing.models.spark.ClientWithSparkInstructionWrapper" target="gudthing.models.spark.ClientWithSparkInstruction">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gudthing.models.ClientWithSelectionListWrapper" target="gudthing.models.ClientWithSelection">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gudthing.models.spark.SingleClientSparkInstructionWrapper" target="gudthing.models.spark.SingleClientSparkInstruction">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gudthing.models.ClientWithInstructionWrapper" target="gudthing.models.ClientWithInstruction">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gudthing.models.spark.ClientWithSparkInstruction" target="gudthing.models.spark.SingleClientSparkInstruction">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gudthing.models.spark.ClientWithSparkInstruction" target="gudthing.models.Client">
+                  <point x="0.0" y="0.0" />
+                  <point x="0.0" y="0.0" />
+                </edge>
+                <edge source="gudthing.models.ClientWithInstruction" target="gudthing.models.Client">
+                  <point x="0.0" y="-15.0" />
+                  <point x="317.0" y="55.0" />
+                  <point x="225.0" y="55.0" />
+                  <point x="16.25" y="15.0" />
+                </edge>
+                <edge source="gudthing.models.ClientWithSelection" target="gudthing.models.Client">
+                  <point x="0.0" y="-15.0" />
+                  <point x="100.5" y="55.0" />
+                  <point x="192.5" y="55.0" />
+                  <point x="-16.25" y="15.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="1.0" x="53.0" y="95.0" />
+              <SelectedNodes />
+              <Categories />
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
             </state>
           </provider>
         </entry>
@@ -408,7 +484,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="1464290875563" />
+        <entry key="$PROJECT_DIR$" value="1464608528309" />
         <entry key="$PROJECT_DIR$/../SpringIo-Building-Rest-services-with-spring" value="1458568973800" />
         <entry key="$PROJECT_DIR$/../readinglist" value="1456430236459" />
       </map>
@@ -425,8 +501,6 @@
                       <ExternalModuleBuildClasspathPojo>
                         <option name="entries">
                           <list>
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.5.RELEASE/86b9af475e134ba9f5c3843f33ff3ecd6cf95883/spring-core-4.2.5.RELEASE-sources.jar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.5.RELEASE/251207b29f0f38f61e3495a2f7fb053cf1bfe8c/spring-core-4.2.5.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.3.RELEASE/80eb20b41f248744445536cf1b4bcfffaf7543ba/spring-boot-starter-web-1.3.3.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-web/1.3.3.RELEASE/f1ee2657f50844d8682b30a1f40aebff3ad60cce/spring-boot-starter-web-1.3.3.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-thymeleaf/1.3.3.RELEASE/e7d86f4e31f59cbbb1b20d1c09096b7ab71c1086/spring-boot-starter-thymeleaf-1.3.3.RELEASE-sources.jar" />
@@ -487,6 +561,8 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-autoconfigure/1.3.3.RELEASE/e7a4a25f74dac6b335ffabc43e3e8a6e3066340e/spring-boot-autoconfigure-1.3.3.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.3.RELEASE/46f42c0459e97ad98fef282e9c3ad4899925c666/spring-boot-starter-logging-1.3.3.RELEASE-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-logging/1.3.3.RELEASE/16b395c84f28b947f1c336aa461fda1e662bb3b6/spring-boot-starter-logging-1.3.3.RELEASE.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.5.RELEASE/86b9af475e134ba9f5c3843f33ff3ecd6cf95883/spring-core-4.2.5.RELEASE-sources.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.2.5.RELEASE/251207b29f0f38f61e3495a2f7fb053cf1bfe8c/spring-core-4.2.5.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.16/ad03b39efb3749be4c8d2eae23d6dee72c889f3b/snakeyaml-1.16-sources.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.yaml/snakeyaml/1.16/d64fb662c9e42789149f5078a62a22edda786c6a/snakeyaml-1.16.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tomcat.embed/tomcat-embed-core/8.0.32/ecbf6e03299d1aac179b2003ec500397ce1f15b8/tomcat-embed-core-8.0.32-sources.jar" />
@@ -716,18 +792,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/gudthing/models/spark/SingleClientSparkInstruction.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/models/spark/SingleClientSparkInstructionWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/models/spark/ClientWithSparkInstructionWrapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/SparkController/clientResults.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/QueryController/querySender.html" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/models/spark/ClientWithSparkInstruction.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/models/spark/SparkType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/gudthing/models/URLService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/SparkController/results.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkSender.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkSingleSender.html" />
-        <option value="$PROJECT_DIR$/src/main/java/gudthing/controllers/SparkController.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/AppConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/MServerRestProperties.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/properties/MServerRestProperties.java" />
@@ -745,12 +817,9 @@
         <option value="$PROJECT_DIR$/src/main/java/gudthing/property/SessionFailureOperation.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/property/SessionExceptionOperation.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/login.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/layouts/dashboardLayout.html" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/properties/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/properties/ApplicationConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/properties/SessionData.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/controllers/HomeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/properties/SessionTypes.java" />
@@ -761,12 +830,19 @@
         <option value="$PROJECT_DIR$/src/main/java/gudthing/properties/SessionSuccessOperations.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/sessionData.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/index.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/QueryController/queryIndex.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkIndex.html" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/models/QueryHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/models/spark/SparkHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/models/InstructionType.java" />
         <option value="$PROJECT_DIR$/src/main/java/gudthing/controllers/QueryController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/layouts/dashboardLayout.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/gudthing/models/URLService.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/gudthing/controllers/SparkController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkSingleSender.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/QueryController/querySingleSender.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/QueryController/queryIndex.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkIndex.html" />
       </list>
     </option>
   </component>
@@ -979,6 +1055,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1028,66 +1106,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SparkController" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1112,100 +1130,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="gudthing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gudthing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="properties" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gudthing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gudthing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="spark" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1242,8 +1166,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1254,18 +1176,15 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spark-example" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
       <recent name="gudthing.controllers" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\templates\QueryController" />
-      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\templates\fragments" />
-      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\templates" />
-      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\static\javascript" />
-      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\static\css" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="gudthing.models.spark" />
+      <recent name="gudthing.models" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="gudthing" />
@@ -1273,9 +1192,12 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="gudthing.models.spark" />
-      <recent name="gudthing.models" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\Ben\IdeaProjects\MServer" />
+      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\templates\QueryController" />
+      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\templates\fragments" />
+      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\templates" />
+      <recent name="D:\Users\Ben\IdeaProjects\MServer\src\main\resources\static\javascript" />
     </key>
   </component>
   <component name="RestClientSettings">
@@ -1735,10 +1657,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Gradle.MServer [bootRun]" />
-        <item index="1" class="java.lang.String" itemvalue="Gradle.MServer [build]" />
-        <item index="2" class="java.lang.String" itemvalue="Gradle.MServer [buildDependents]" />
-        <item index="3" class="java.lang.String" itemvalue="Gradle.MServer [clean]" />
+        <item index="0" class="java.lang.String" itemvalue="Gradle.MServer [clean]" />
+        <item index="1" class="java.lang.String" itemvalue="Gradle.MServer [bootRun]" />
+        <item index="2" class="java.lang.String" itemvalue="Gradle.MServer [build]" />
+        <item index="3" class="java.lang.String" itemvalue="Gradle.MServer [buildDependents]" />
         <item index="4" class="java.lang.String" itemvalue="Gradle.MServer [check]" />
       </list>
     </recent_temporary>
@@ -1815,7 +1737,11 @@
       <workItem from="1464336290327" duration="12886000" />
       <workItem from="1464422268994" duration="3223000" />
       <workItem from="1464444893197" duration="10000" />
-      <workItem from="1464464749330" duration="445000" />
+      <workItem from="1464464749330" duration="4574000" />
+      <workItem from="1464469658630" duration="3052000" />
+      <workItem from="1464508656089" duration="747000" />
+      <workItem from="1464547785964" duration="1747000" />
+      <workItem from="1464608338717" duration="3663000" />
     </task>
     <servers />
   </component>
@@ -1852,7 +1778,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="324378000" />
+    <option name="totallyTimeSpent" value="337716000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1872,11 +1798,11 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2965368" sideWeight="0.5271855" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17640692" sideWeight="0.4728145" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25865802" sideWeight="0.4728145" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2531983" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26492536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20415778" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15724947" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1963,8 +1889,26 @@
           <properties />
           <option name="timeStamp" value="48" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gudthing/models/QueryHandler.java</url>
+          <line>29</line>
+          <properties />
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gudthing/models/URLService.java</url>
+          <line>63</line>
+          <properties />
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gudthing/models/URLService.java</url>
+          <line>33</line>
+          <properties />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="49" />
+      <option name="time" value="56" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2005,13 +1949,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.15178572">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/QueryController/querySingleSender.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8943662">
-          <caret line="76" column="33" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -2084,24 +2021,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.5.RELEASE/6d6268e82b35921d9daf4cfda9a2f1bd99afd87a/spring-web-4.2.5.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35547575">
-          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/spark/SparkType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.136">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkSingleSender.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1353251">
-          <caret line="58" column="148" selection-start-line="58" selection-start-column="148" selection-end-line="58" selection-end-column="148" />
         </state>
       </provider>
     </entry>
@@ -2182,24 +2105,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layouts/dashboardLayout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52974504">
-          <caret line="63" column="40" selection-start-line="63" selection-start-column="40" selection-end-line="63" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/MServerApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.11612022">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18579236">
-          <caret line="8" column="36" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2207,13 +2117,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4432">
           <caret line="28" column="111" selection-start-line="28" selection-start-column="111" selection-end-line="28" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23465212">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2231,21 +2135,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/controllers/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31428573">
-          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/properties/SessionData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2">
-          <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/properties/SessionTypes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14285715">
@@ -2257,13 +2146,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.14285715">
           <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/URLService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09579832">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -2302,10 +2184,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/properties/SessionData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9536153">
+          <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/InstructionType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21480145">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/spark/SparkHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8117326">
-          <caret line="52" column="35" selection-start-line="52" selection-start-column="35" selection-end-line="52" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding>
             <element signature="method#getClientHttpRequestFactory#0;class#SparkHandler#0" expanded="false" />
             <element signature="method#isConnected#0;class#SparkHandler#0" expanded="false" />
@@ -2314,31 +2210,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/controllers/SparkController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/controllers/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.8813096">
-          <caret line="203" column="23" selection-start-line="203" selection-start-column="23" selection-end-line="203" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.37142858">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/QueryController/queryIndex.html">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/4.2.5.RELEASE/6d6268e82b35921d9daf4cfda9a2f1bd99afd87a/spring-web-4.2.5.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.072135784">
-          <caret line="28" column="92" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
+        <state vertical-scroll-proportion="0.37992832">
+          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkIndex.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/controllers/QueryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32248938">
-          <caret line="28" column="92" selection-start-line="28" selection-start-column="92" selection-end-line="28" selection-end-column="92" />
+        <state vertical-scroll-proportion="0.82857144">
+          <caret line="159" column="0" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/InstructionType.java">
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46575344">
+          <caret line="24" column="14" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/layouts/dashboardLayout.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.076923">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -2346,16 +2259,120 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/QueryHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/controllers/QueryController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/models/URLService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4406549">
-          <caret line="237" column="9" selection-start-line="237" selection-start-column="9" selection-end-line="237" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="42" column="38" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/gudthing/controllers/SparkController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.007961784">
+          <caret line="79" column="16" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/QueryController/querySingleSender.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="51" column="42" selection-start-line="51" selection-start-column="42" selection-end-line="51" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkSingleSender.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.1538463">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/QueryController/queryIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.346153">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/SparkController/sparkIndex.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.115385">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/gudthing.models.Client">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>gudthing.models.Client</OriginalElement>
+          <nodes>
+            <node x="-256.0" y="82.0">gudthing.models.spark.ClientWithSparkInstructionWrapper</node>
+            <node x="243.5" y="80.0">gudthing.models.ClientWithInstruction</node>
+            <node x="-464.0" y="86.0">gudthing.models.spark.SingleClientSparkInstruction</node>
+            <node x="180.25" y="-94.0">gudthing.models.Client</node>
+            <node x="0.0" y="160.0">gudthing.models.ClientWithSelectionListWrapper</node>
+            <node x="430.0" y="328.0">gudthing.models.spark.SparkHandler</node>
+            <node x="-393.0" y="-80.0">gudthing.models.spark.ClientWithSparkInstruction</node>
+            <node x="221.0" y="160.0">gudthing.models.ClientWithInstructionWrapper</node>
+            <node x="31.5" y="80.0">gudthing.models.ClientWithSelection</node>
+            <node x="-476.0" y="200.0">gudthing.models.spark.SingleClientSparkInstructionWrapper</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="gudthing.models.spark.ClientWithSparkInstructionWrapper" target="gudthing.models.spark.ClientWithSparkInstruction">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gudthing.models.ClientWithSelectionListWrapper" target="gudthing.models.ClientWithSelection">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gudthing.models.spark.SingleClientSparkInstructionWrapper" target="gudthing.models.spark.SingleClientSparkInstruction">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gudthing.models.ClientWithInstructionWrapper" target="gudthing.models.ClientWithInstruction">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gudthing.models.spark.ClientWithSparkInstruction" target="gudthing.models.spark.SingleClientSparkInstruction">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gudthing.models.spark.ClientWithSparkInstruction" target="gudthing.models.Client">
+              <point x="0.0" y="0.0" />
+              <point x="0.0" y="0.0" />
+            </edge>
+            <edge source="gudthing.models.ClientWithInstruction" target="gudthing.models.Client">
+              <point x="0.0" y="-15.0" />
+              <point x="317.0" y="55.0" />
+              <point x="225.0" y="55.0" />
+              <point x="16.25" y="15.0" />
+            </edge>
+            <edge source="gudthing.models.ClientWithSelection" target="gudthing.models.Client">
+              <point x="0.0" y="-15.0" />
+              <point x="100.5" y="55.0" />
+              <point x="192.5" y="55.0" />
+              <point x="-16.25" y="15.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="53.0" y="95.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>

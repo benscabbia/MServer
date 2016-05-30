@@ -17,7 +17,7 @@ apply plugin: 'spring-boot'
 
 jar {
 	baseName = 'mserver'
-	version = '0.0.1-SNAPSHOT'
+	version = '1.0.0-SNAPSHOT'
 }
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -44,9 +44,6 @@ dependencies {
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")
-
-    //compile("com.jayway.jsonpath:json-path:0.8.1")
-
 }
 
 
