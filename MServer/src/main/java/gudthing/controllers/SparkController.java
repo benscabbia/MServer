@@ -137,7 +137,6 @@ public class SparkController {
     public String getClient(@PathVariable int clientID, Model model) {
 
         if (clientID > 0) {
-            //TODO page sparksinglesender ffor single queires
 
             Client client = clientRepository.findClientByClientID(clientID);
             model.addAttribute(client);
